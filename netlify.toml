@@ -1,0 +1,7 @@
+[build]
+  publish = "."
+
+[images]
+  remote_images = [
+    "https://ext.same-assets.com/.*"
+  ]

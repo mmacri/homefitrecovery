@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Compare Recovery Products - Recovery Essentials</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .hero-bg {
+            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm py-4">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center">
+                        <div class="w-10 h-10 bg-indigo-600 flex items-center justify-center rounded">
+                            <span class="text-white font-bold">RE</span>
+                        </div>
+                        <div class="ml-2">
+                            <div class="font-bold">Recovery Essentials</div>
+                            <div class="text-xs text-gray-500">Home Fitness Recovery</div>
+                        </div>
+                    </a>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="../products/massage-guns.html" class="text-gray-600 hover:text-indigo-600">Massage Guns</a>
+                    <a href="../products/foam-rollers.html" class="text-gray-600 hover:text-indigo-600">Foam Rollers</a>
+                    <a href="../products/fitness-bands.html" class="text-gray-600 hover:text-indigo-600">Fitness Bands</a>
+                    <a href="../products/compression-gear.html" class="text-gray-600 hover:text-indigo-600">Compression Gear</a>
+                    <a href="../products/comparison.html" class="text-indigo-600 font-medium">Compare</a>
+                    <a href="../blog/index.html" class="text-gray-600 hover:text-indigo-600">Blog</a>
+                    <a href="../about.html" class="text-gray-600 hover:text-indigo-600">About Us</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-bg text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h1 class="text-4xl font-bold mb-4">Product Comparison Tool</h1>
+                <p class="text-xl mb-6">
+                    Compare features, specs, and prices of top recovery products side-by-side
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comparison Tool -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="mb-10">
+                <h2 class="text-2xl font-bold mb-6">Select Products to Compare</h2>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Product Category</label>
+                        <select id="category-select" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <option value="">Select a category</option>
+                            <option value="massage-guns">Massage Guns</option>
+                            <option value="foam-rollers">Foam Rollers</option>
+                            <option value="fitness-bands">Fitness Bands</option>
+                            <option value="compression-gear">Compression Gear</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Product 1</label>
+                        <select id="product-1-select" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <option value="">Select a product</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Product 2</label>
+                        <select id="product-2-select" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <option value="">Select a product</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Product 3 (Optional)</label>
+                        <select id="product-3-select" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                            <option value="">Select a product</option>
+                        </select>
+                    </div>
+                </div>
+                <button id="compare-btn" class="mt-6 bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-6 rounded-md">
+                    Compare Products
+                </button>
+            </div>
+
+            <!-- Comparison Results -->
+            <div id="comparison-results" class="hidden">
+                <h2 class="text-2xl font-bold mb-6">Comparison Results</h2>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200 rounded-lg shadow-md">
+                        <thead>
+                            <tr class="bg-indigo-100">
+                                <th class="py-3 px-4 text-left">Feature</th>
+                                <th class="py-3 px-4 text-left product-1-name">Product 1</th>
+                                <th class="py-3 px-4 text-left product-2-name">Product 2</th>
+                                <th class="py-3 px-4 text-left product-3-name">Product 3</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-200">
+                                <td class="py-3 px-4 font-medium">Image</td>
+                                <td class="py-3 px-4 product-1-image"></td>
+                                <td class="py-3 px-4 product-2-image"></td>
+                                <td class="py-3 px-4 product-3-image"></td>
+                            </tr>
+                            <tr class="border-b border-gray-200 bg-gray-50">
+                                <td class="py-3 px-4 font-medium">Price</td>
+                                <td class="py-3 px-4 product-1-price"></td>
+                                <td class="py-3 px-4 product-2-price"></td>
+                                <td class="py-3 px-4 product-3-price"></td>
+                            </tr>
+                            <tr class="border-b border-gray-200">
+                                <td class="py-3 px-4 font-medium">Rating</td>
+                                <td class="py-3 px-4 product-1-rating"></td>
+                                <td class="py-3 px-4 product-2-rating"></td>
+                                <td class="py-3 px-4 product-3-rating"></td>
+                            </tr>
+                            <tr class="border-b border-gray-200 bg-gray-50">
+                                <td class="py-3 px-4 font-medium">Key Features</td>
+                                <td class="py-3 px-4 product-1-features"></td>
+                                <td class="py-3 px-4 product-2-features"></td>
+                                <td class="py-3 px-4 product-3-features"></td>
+                            </tr>
+                            <tr class="border-b border-gray-200">
+                                <td class="py-3 px-4 font-medium">Best For</td>
+                                <td class="py-3 px-4 product-1-best-for"></td>
+                                <td class="py-3 px-4 product-2-best-for"></td>
+                                <td class="py-3 px-4 product-3-best-for"></td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="py-3 px-4 font-medium">Action</td>
+                                <td class="py-3 px-4 product-1-action"></td>
+                                <td class="py-3 px-4 product-2-action"></td>
+                                <td class="py-3 px-4 product-3-action"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sample Comparison -->
+    <section class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <h2 class="text-2xl font-bold mb-6">Popular Comparisons</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="#" class="block bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition duration-300">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-3">Theragun vs. Hypervolt</h3>
+                        <p class="text-gray-600 text-sm mb-3">Compare the top percussion massage guns from Therabody and Hyperice.</p>
+                        <div class="flex justify-between">
+                            <div class="w-16 h-16 bg-gray-200 rounded-md"></div>
+                            <div class="w-16 h-16 bg-gray-200 rounded-md"></div>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="block bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition duration-300">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-3">Top Foam Rollers</h3>
+                        <p class="text-gray-600 text-sm mb-3">Compare TriggerPoint GRID vs Rumble Roller vs AmazonBasics.</p>
+                        <div class="flex justify-between">
+                            <div class="w-16 h-16 bg-gray-200 rounded-md"></div>
+                            <div class="w-16 h-16 bg-gray-200 rounded-md"></div>
+                        </div>
+                    </div>
+                </a>
+                <a href="#" class="block bg-white rounded-lg shadow-sm border border-gray-200 hover:shadow-md transition duration-300">
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-3">Compression Options</h3>
+                        <p class="text-gray-600 text-sm mb-3">Compare 2XU vs. CEP vs. Under Armour compression gear.</p>
+                        <div class="flex justify-between">
+                            <div class="w-16 h-16 bg-gray-200 rounded-md"></div>
+                            <div class="w-16 h-16 bg-gray-200 rounded-md"></div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Sign-up -->
+    <section class="py-16 bg-indigo-600 text-white">
+        <div class="container mx-auto px-4 max-w-3xl text-center">
+            <h2 class="text-3xl font-bold mb-4">Get Recovery Tips & Exclusive Deals</h2>
+            <p class="text-indigo-100 mb-8">
+                Subscribe to our newsletter for expert recovery advice, product recommendations, and exclusive offers.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-3">
+                <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-md text-gray-800" />
+                <button class="bg-indigo-800 hover:bg-indigo-900 font-medium px-6 py-3 rounded-md">
+                    Subscribe Now
+                </button>
+            </div>
+            <p class="text-xs text-indigo-200 mt-4">
+                We respect your privacy. Unsubscribe anytime.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center gap-2 mb-6">
+                        <div class="w-10 h-10 bg-indigo-600 flex items-center justify-center rounded">
+                            <span class="font-bold">RE</span>
+                        </div>
+                        <div>
+                            <div class="font-bold">Recovery Essentials</div>
+                            <div class="text-xs text-gray-400">Home Fitness Recovery</div>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm">
+                        Your trusted source for home fitness recovery product reviews and recommendations.
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Product Categories</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../products/massage-guns.html" class="text-gray-400 hover:text-white">Massage Guns</a></li>
+                        <li><a href="../products/foam-rollers.html" class="text-gray-400 hover:text-white">Foam Rollers</a></li>
+                        <li><a href="../products/fitness-bands.html" class="text-gray-400 hover:text-white">Fitness Bands</a></li>
+                        <li><a href="../products/compression-gear.html" class="text-gray-400 hover:text-white">Compression Gear</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Resources</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../blog/index.html" class="text-gray-400 hover:text-white">Recovery Blog</a></li>
+                        <li><a href="../blog/foam-rolling-guide.html" class="text-gray-400 hover:text-white">Foam Rolling Guide</a></li>
+                        <li><a href="../blog/massage-gun-techniques.html" class="text-gray-400 hover:text-white">Massage Gun Techniques</a></li>
+                        <li><a href="../newsletter.html" class="text-gray-400 hover:text-white">Newsletter</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Company</h3>
+                    <ul class="space-y-2">
+                        <li><a href="../about.html" class="text-gray-400 hover:text-white">About Us</a></li>
+                        <li><a href="../contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
+                        <li><a href="../privacy.html" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
+                        <li><a href="../affiliate-disclosure.html" class="text-gray-400 hover:text-white">Affiliate Disclosure</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
+                <p>&copy; 2023 Recovery Essentials. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Amazon API Script -->
+    <script src="../js/amazon-api.js"></script>
+
+    <script>
+        // Sample product data
+        const productData = {
+            'massage-guns': [
+                {
+                    id: 'mg001',
+                    name: 'Theragun Pro',
+                    price: '$599',
+                    rating: '4.8/5',
+                    image: 'https://ext.same-assets.com/4260193750/159753842.jpeg',
+                    features: ['5 speeds', 'Multiple attachments', 'App connectivity', 'Long battery life'],
+                    bestFor: 'Professional athletes and serious recovery',
+                    link: '../products/massage-guns.html#theragun-pro'
+                },
+                {
+                    id: 'mg002',
+                    name: 'Hypervolt Plus',
+                    price: '$349',
+                    rating: '4.6/5',
+                    image: 'https://ext.same-assets.com/2560824938/1799041335.jpeg',
+                    features: ['3 speeds', 'Pressure sensor', 'Quiet operation', 'Bluetooth enabled'],
+                    bestFor: 'Everyday users who value quieter operation',
+                    link: '../products/massage-guns.html#hypervolt-plus'
+                },
+                {
+                    id: 'mg003',
+                    name: 'Bob and Brad Q2 Mini',
+                    price: '$89.99',
+                    rating: '4.4/5',
+                    image: 'https://ext.same-assets.com/198595764/1658350751.jpeg',
+                    features: ['5 speeds', 'Pocket-sized', 'Lightweight', 'Travel-friendly'],
+                    bestFor: 'Travel and on-the-go recovery',
+                    link: '../products/massage-guns.html#bob-brad-q2'
+                }
+            ],
+            'foam-rollers': [
+                {
+                    id: 'fr001',
+                    name: 'TriggerPoint GRID',
+                    price: '$36.99',
+                    rating: '4.8/5',
+                    image: 'https://ext.same-assets.com/2108554563/1470587620.jpeg',
+                    features: ['Multi-density surface', 'Hollow core design', 'Durable construction', 'Maintains shape'],
+                    bestFor: 'General use and balanced recovery',
+                    link: '../products/foam-rollers.html#triggerpoint-grid'
+                },
+                {
+                    id: 'fr002',
+                    name: 'Rumble Roller',
+                    price: '$44.95',
+                    rating: '4.6/5',
+                    image: 'https://ext.same-assets.com/3962596208/3301349755.jpeg',
+                    features: ['Aggressive knobs', 'Deep tissue massage', 'Firm density', 'Multiple sizes'],
+                    bestFor: 'Experienced users needing deep tissue work',
+                    link: '../products/foam-rollers.html#rumble-roller'
+                }
+            ],
+            'compression-gear': [
+                {
+                    id: 'cg001',
+                    name: '2XU Recovery Tights',
+                    price: '$99.95',
+                    rating: '4.8/5',
+                    image: 'https://ext.same-assets.com/3220712056/3156167785.jpeg',
+                    features: ['Medical-grade compression', 'PWX fabric', 'Graduated pressure', 'Antibacterial'],
+                    bestFor: 'Overall recovery and sleep',
+                    link: '../products/compression-gear.html#2xu-tights'
+                },
+                {
+                    id: 'cg002',
+                    name: 'Zensah Tech+ Socks',
+                    price: '$29.99',
+                    rating: '4.7/5',
+                    image: 'https://ext.same-assets.com/2651616194/3622592620.jpeg',
+                    features: ['Graduated compression', 'Moisture-wicking', 'Targeted arch support', 'Seamless toe'],
+                    bestFor: 'Calf recovery and running',
+                    link: '../products/compression-gear.html#zensah-socks'
+                }
+            ],
+            'fitness-bands': [
+                {
+                    id: 'fb001',
+                    name: 'TheraBand Resistance Set',
+                    price: '$18.95',
+                    rating: '4.7/5',
+                    image: 'https://ext.same-assets.com/2560824938/1799041335.jpeg',
+                    features: ['Progressive resistance', 'Latex material', 'Multiple levels', 'Versatile use'],
+                    bestFor: 'Rehabilitation and light strength training',
+                    link: '../products/fitness-bands.html#theraband-set'
+                },
+                {
+                    id: 'fb002',
+                    name: 'Rogue Monster Bands',
+                    price: '$39.95',
+                    rating: '4.8/5',
+                    image: 'https://ext.same-assets.com/198595764/1658350751.jpeg',
+                    features: ['Heavy duty construction', 'High resistance levels', 'Durable material', 'Loop design'],
+                    bestFor: 'Serious strength training and assistance',
+                    link: '../products/fitness-bands.html#rogue-bands'
+                }
+            ]
+        };
+
+        // Populate product selects based on category
+        document.getElementById('category-select').addEventListener('change', function() {
+            const category = this.value;
+            const products = productData[category] || [];
+
+            // Clear product selects
+            const selects = [
+                document.getElementById('product-1-select'),
+                document.getElementById('product-2-select'),
+                document.getElementById('product-3-select')
+            ];
+
+            selects.forEach(select => {
+                select.innerHTML = '<option value="">Select a product</option>';
+
+                products.forEach(product => {
+                    const option = document.createElement('option');
+                    option.value = product.id;
+                    option.textContent = product.name;
+                    select.appendChild(option);
+                });
+            });
+        });
+
+        // Handle comparison
+        document.getElementById('compare-btn').addEventListener('click', function() {
+            const category = document.getElementById('category-select').value;
+            if (!category) {
+                alert('Please select a product category');
+                return;
+            }
+
+            const product1Id = document.getElementById('product-1-select').value;
+            const product2Id = document.getElementById('product-2-select').value;
+
+            if (!product1Id || !product2Id) {
+                alert('Please select at least two products to compare');
+                return;
+            }
+
+            const products = productData[category];
+            const product1 = products.find(p => p.id === product1Id);
+            const product2 = products.find(p => p.id === product2Id);
+            const product3Id = document.getElementById('product-3-select').value;
+            const product3 = product3Id ? products.find(p => p.id === product3Id) : null;
+
+            // Show comparison results
+            document.getElementById('comparison-results').classList.remove('hidden');
+
+            // Update table headers
+            document.querySelector('.product-1-name').textContent = product1.name;
+            document.querySelector('.product-2-name').textContent = product2.name;
+            if (product3) {
+                document.querySelector('.product-3-name').textContent = product3.name;
+            } else {
+                document.querySelector('.product-3-name').textContent = '-';
+            }
+
+            // Update table cells
+            document.querySelector('.product-1-image').innerHTML = `<img src="${product1.image}" alt="${product1.name}" class="w-24 h-24 object-cover rounded">`;
+            document.querySelector('.product-2-image').innerHTML = `<img src="${product2.image}" alt="${product2.name}" class="w-24 h-24 object-cover rounded">`;
+            document.querySelector('.product-3-image').innerHTML = product3 ? `<img src="${product3.image}" alt="${product3.name}" class="w-24 h-24 object-cover rounded">` : '-';
+
+            document.querySelector('.product-1-price').textContent = product1.price;
+            document.querySelector('.product-2-price').textContent = product2.price;
+            document.querySelector('.product-3-price').textContent = product3 ? product3.price : '-';
+
+            document.querySelector('.product-1-rating').innerHTML = `<div class="text-yellow-400">${'★'.repeat(Math.floor(parseFloat(product1.rating)))}</div>`;
+            document.querySelector('.product-2-rating').innerHTML = `<div class="text-yellow-400">${'★'.repeat(Math.floor(parseFloat(product2.rating)))}</div>`;
+            document.querySelector('.product-3-rating').innerHTML = product3 ? `<div class="text-yellow-400">${'★'.repeat(Math.floor(parseFloat(product3.rating)))}</div>` : '-';
+
+            document.querySelector('.product-1-features').innerHTML = product1.features.map(f => `<div class="text-sm"><i class="fas fa-check text-green-500 mr-1"></i>${f}</div>`).join('');
+            document.querySelector('.product-2-features').innerHTML = product2.features.map(f => `<div class="text-sm"><i class="fas fa-check text-green-500 mr-1"></i>${f}</div>`).join('');
+            document.querySelector('.product-3-features').innerHTML = product3 ? product3.features.map(f => `<div class="text-sm"><i class="fas fa-check text-green-500 mr-1"></i>${f}</div>`).join('') : '-';
+
+            document.querySelector('.product-1-best-for').textContent = product1.bestFor;
+            document.querySelector('.product-2-best-for').textContent = product2.bestFor;
+            document.querySelector('.product-3-best-for').textContent = product3 ? product3.bestFor : '-';
+
+            document.querySelector('.product-1-action').innerHTML = `<a href="${product1.link}" class="text-indigo-600 hover:text-indigo-800">View Details</a>`;
+            document.querySelector('.product-2-action').innerHTML = `<a href="${product2.link}" class="text-indigo-600 hover:text-indigo-800">View Details</a>`;
+            document.querySelector('.product-3-action').innerHTML = product3 ? `<a href="${product3.link}" class="text-indigo-600 hover:text-indigo-800">View Details</a>` : '-';
+        });
+    </script>
+</body>
+</html>
