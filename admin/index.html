@@ -1,162 +1,266 @@
-<nav class="px-2 pt-2 pb-3 space-y-1" id="mobile-nav">
-    <a href="index.html" class="block px-3 py-2 rounded-md text-white bg-gray-900 font-medium" data-section="dashboard">
-        Dashboard
-    </a>
-    <a href="products.html" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" data-target="products-section">
-        Products
-    </a>
-    <a href="product-analytics.html" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" data-target="product-analytics-section">
-        Product Analytics
-    </a>
-    <a href="orders.html" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" data-section="orders">
-        Orders
-    </a>
-    <a href="customers.html" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" data-section="customers">
-        Customers
-    </a>
-    <a href="email-marketing.html" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" data-section="email_marketing">
-        Email Marketing
-    </a>
-    <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('blog.html')" data-section="blog">
-        Blog
-    </a>
-    <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('navigation.html')" data-section="navigation">
-        Navigation
-    </a>
-    <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('affiliate.html')" data-section="affiliate">
-        Affiliate
-    </a>
-    <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('settings.html')" data-section="settings">
-        Settings
-    </a>
-    <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('tags-categories.html')" data-section="tags_categories">
-        Tags & Categories
-    </a>
-    <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('templates.html')" data-section="templates">
-        Templates
-    </a>
-    <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('analytics.html')" data-section="analytics">
-        Analytics
-    </a>
-    <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('calendar.html')" data-section="calendar">
-        Calendar
-    </a>
-    <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('users.html')" data-section="users">
-        Users
-    </a>
-    <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('seo.html')" data-section="seo">
-        SEO
-    </a>
-    <div class="border-t border-gray-700 pt-2 mt-2">
-        <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="logout()">
-            Logout
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Dashboard - Recovery Essentials</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">  <!-- ADDED CSS LINK -->
+</head>
+<body class="bg-gray-100 h-screen antialiased">
+
+<div class="flex h-full">
+<!-- Sidebar -->
+<aside class="w-64 bg-gray-800 text-white shadow-md">
+    <div class="flex items-center justify-center h-16 bg-gray-900">
+        <span class="text-lg font-semibold">Recovery Essentials Admin</span>
+    </div>
+    <nav class="px-2 pt-2 pb-3 space-y-1" id="sidebar-nav">
+        <a href="index.html" class="block px-3 py-2 rounded-md text-white bg-gray-900 font-medium" data-section="dashboard">
+            Dashboard
         </a>
-    </div>
-</nav>
-</div>
-</header>
+        <a href="products.html" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" data-section="products">
+            Products
+        </a>
+        <a href="product-analytics.html" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" data-section="product_analytics">
+            Product Analytics
+        </a>
+        <a href="orders.html" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" data-section="orders">
+            Orders
+        </a>
+        <a href="customers.html" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" data-section="customers">
+            Customers
+        </a>
+        <a href="email-marketing.html" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" data-section="email_marketing">
+            Email Marketing
+        </a>
+        <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('blog.html')" data-section="blog">
+            Blog
+        </a>
+        <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('navigation.html')" data-section="navigation">
+            Navigation
+        </a>
+        <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('affiliate.html')" data-section="affiliate">
+            Affiliate
+        </a>
+        <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('settings.html')" data-section="settings">
+            Settings
+        </a>
+        <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('tags-categories.html')" data-section="tags_categories">
+            Tags & Categories
+        </a>
+        <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('templates.html')" data-section="templates">
+            Templates
+        </a>
+        <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('analytics.html')" data-section="analytics">
+            Analytics
+        </a>
+        <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('calendar.html')" data-section="calendar">
+            Calendar
+        </a>
+        <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('users.html')" data-section="users">
+            Users
+        </a>
+        <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('seo.html')" data-section="seo">
+            SEO
+        </a>
+        <div class="border-t border-gray-700 pt-2 mt-2">
+            <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="logout()">
+                Logout
+            </a>
+        </div>
+    </nav>
+</aside>
 
-<!-- Main Content Area -->
-<main class="flex-1 overflow-y-auto p-6" id="main-content">
-    <!-- Dashboard Content -->
-    <div class="mb-8">
-        <h2 class="text-2xl font-bold text-gray-900">Dashboard Overview</h2>
-        <p class="text-gray-600 mt-1">Welcome to the Recovery Essentials admin dashboard.</p>
-    </div>
-
-    <!-- Stats Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
-        <!-- Products Stat -->
-        <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
-            <div class="flex items-center">
-                <div class="p-3 rounded-full bg-indigo-100 text-indigo-600">
-                    <i class="fas fa-box"></i>
+<!-- Content Wrapper -->
+<div class="flex flex-col flex-1">
+    <!-- Top Navigation -->
+    <header class="bg-white shadow">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16 items-center">
+                <div class="flex items-center">
+                    <!-- Mobile menu button-->
+                    <button id="mobile-menu-button" type="button" class="bg-gray-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <h2 id="page-title" class="ml-4 text-xl font-semibold text-gray-800">Dashboard</h2>
                 </div>
-                <div class="ml-4">
-                    <p class="text-sm text-gray-500 font-medium">Total Products</p>
-                    <p class="text-2xl font-bold text-gray-900">24</p>
+
+                <!-- User Info -->
+                <div class="ml-4 flex-shrink-0 flex items-center">
+                    <div>
+                        <span id="user-name" class="mr-2 text-sm font-medium text-gray-600"></span>
+                        <button id="user-menu-button" class="bg-gray-800 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white" aria-expanded="false" aria-haspopup="true">
+                            <img class="h-8 w-8 rounded-full" src="https://via.placeholder.com/40" alt="User avatar">
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Customers Stat -->
-        <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
-            <div class="flex items-center">
-                <div class="p-3 rounded-full bg-green-100 text-green-600">
-                    <i class="fas fa-user-friends"></i>
+        <!-- Mobile Menu, show/hide based on menu state. -->
+        <div class="md:hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1" id="mobile-nav">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-white bg-gray-900 font-medium" data-section="dashboard">
+                    Dashboard
+                </a>
+                <a href="products.html" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" data-target="products-section">
+                    Products
+                </a>
+                <a href="product-analytics.html" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" data-target="product-analytics-section">
+                    Product Analytics
+                </a>
+                <a href="orders.html" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" data-section="orders">
+                    Orders
+                </a>
+                <a href="customers.html" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" data-section="customers">
+                    Customers
+                </a>
+                <a href="email-marketing.html" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" data-section="email_marketing">
+                    Email Marketing
+                </a>
+                <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('blog.html')" data-section="blog">
+                    Blog
+                </a>
+                <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('navigation.html')" data-section="navigation">
+                    Navigation
+                </a>
+                <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('affiliate.html')" data-section="affiliate">
+                    Affiliate
+                </a>
+                <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('settings.html')" data-section="settings">
+                    Settings
+                </a>
+                <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('tags-categories.html')" data-section="tags_categories">
+                    Tags & Categories
+                </a>
+                <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('templates.html')" data-section="templates">
+                    Templates
+                </a>
+                <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('analytics.html')" data-section="analytics">
+                    Analytics
+                </a>
+                <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('calendar.html')" data-section="calendar">
+                    Calendar
+                </a>
+                <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('users.html')" data-section="users">
+                    Users
+                </a>
+                <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="loadContent('seo.html')" data-section="seo">
+                    SEO
+                </a>
+                <div class="border-t border-gray-700 pt-2 mt-2">
+                    <a href="#" class="block px-3 py-2 rounded-md text-gray-300 hover:bg-gray-700 hover:text-white" onclick="logout()">
+                        Logout
+                    </a>
                 </div>
-                <div class="ml-4">
-                    <p class="text-sm text-gray-500 font-medium">Customers</p>
-                    <p class="text-2xl font-bold text-gray-900">128</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 overflow-y-auto p-6" id="main-content">
+        <!-- Dashboard Content -->
+        <div class="mb-8">
+            <h2 class="text-2xl font-bold text-gray-900">Dashboard Overview</h2>
+            <p class="text-gray-600 mt-1">Welcome to the Recovery Essentials admin dashboard.</p>
+        </div>
+
+        <!-- Stats Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <!-- Products Stat -->
+            <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-indigo-100 text-indigo-600">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm text-gray-500 font-medium">Total Products</p>
+                        <p class="text-2xl font-bold text-gray-900">24</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customers Stat -->
+            <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-green-100 text-green-600">
+                        <i class="fas fa-user-friends"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm text-gray-500 font-medium">Customers</p>
+                        <p class="text-2xl font-bold text-gray-900">128</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Orders Stat -->
+            <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-amber-100 text-amber-600">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm text-gray-500 font-medium">Orders</p>
+                        <p class="text-2xl font-bold text-gray-900">53</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Revenue Stat -->
+            <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+                <div class="flex items-center">
+                    <div class="p-3 rounded-full bg-purple-100 text-purple-600">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="ml-4">
+                        <p class="text-sm text-gray-500 font-medium">Revenue</p>
+                        <p class="text-2xl font-bold text-gray-900">$8,254</p>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Orders Stat -->
-        <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
-            <div class="flex items-center">
-                <div class="p-3 rounded-full bg-amber-100 text-amber-600">
-                    <i class="fas fa-shopping-cart"></i>
-                </div>
-                <div class="ml-4">
-                    <p class="text-sm text-gray-500 font-medium">Orders</p>
-                    <p class="text-2xl font-bold text-gray-900">53</p>
-                </div>
+        <!-- Recent Activity -->
+        <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <h3 class="text-lg font-bold text-gray-900 mb-4">Recent Activity</h3>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead>
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Order</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">New order #1024 received from Jane Smith</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-03-22</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Customer</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">New customer registered: Mike Johnson</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-03-21</td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Product</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Added new product: Theragun Pro</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-03-20</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Blog</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Published article: "Massage Gun Techniques"</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-03-19</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
-
-        <!-- Revenue Stat -->
-        <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
-            <div class="flex items-center">
-                <div class="p-3 rounded-full bg-purple-100 text-purple-600">
-                    <i class="fas fa-dollar-sign"></i>
-                </div>
-                <div class="ml-4">
-                    <p class="text-sm text-gray-500 font-medium">Revenue</p>
-                    <p class="text-2xl font-bold text-gray-900">$8,254</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Recent Activity -->
-    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
-        <h3 class="text-lg font-bold text-gray-900 mb-4">Recent Activity</h3>
-        <div class="overflow-x-auto">
-            <table class="min-w-full divide-y divide-gray-200">
-                <thead>
-                    <tr>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
-                        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="bg-white">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Order</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">New order #1024 received from Jane Smith</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-03-22</td>
-                    </tr>
-                    <tr class="bg-gray-50">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Customer</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">New customer registered: Mike Johnson</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-03-21</td>
-                    </tr>
-                    <tr class="bg-white">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Product</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Added new product: Theragun Pro</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-03-20</td>
-                    </tr>
-                    <tr class="bg-gray-50">
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900">Blog</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Published article: "Massage Gun Techniques"</td>
-                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">2025-03-19</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-</main>
+    </main>
 </div>
 </div>
 
