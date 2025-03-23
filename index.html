@@ -3,334 +3,540 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Recovery Essentials - Home Fitness Recovery Products & Reviews</title>
-    <meta name="description" content="Your trusted source for honest, in-depth reviews of the best fitness recovery products, including massage guns, foam rollers, compression gear, and more.">
+    <title>Recovery Essentials - Best Home Fitness Recovery Products</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
     <style>
         .hero-bg {
             background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+            background-image: url('https://ext.same-assets.com/30303011/recovery-hero-bg.jpg'), linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+            background-blend-mode: overlay;
+            background-size: cover;
+            background-position: center;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
         }
     </style>
 </head>
 <body class="font-sans bg-gray-50">
     <!-- Header -->
-    <header class="bg-white shadow-sm py-4">
+    <header class="bg-white shadow-sm py-4 sticky top-0 z-10">
         <div class="container mx-auto px-4">
             <div class="flex justify-between items-center">
                 <div class="flex items-center">
-                    <a href="index.html" class="flex items-center">
+                    <a href="/index.html" class="flex items-center">
                         <div class="w-10 h-10 bg-indigo-600 flex items-center justify-center rounded">
                             <span class="text-white font-bold">RE</span>
                         </div>
                         <div class="ml-2">
-                            <div class="font-bold">Recovery Essentials</div>
-                            <div class="text-xs text-gray-500">Home Fitness Recovery</div>
+                            <div class="font-bold text-gray-800">Recovery Essentials</div>
+                            <div class="text-xs text-gray-500">Best Recovery Products & Reviews</div>
                         </div>
                     </a>
                 </div>
-                <nav class="hidden md:flex space-x-6">
-                    <a href="products/massage-guns.html" class="text-gray-600 hover:text-indigo-600">Massage Guns</a>
-                    <a href="products/foam-rollers.html" class="text-gray-600 hover:text-indigo-600">Foam Rollers</a>
-                    <a href="products/fitness-bands.html" class="text-gray-600 hover:text-indigo-600">Fitness Bands</a>
-                    <a href="products/compression-gear.html" class="text-gray-600 hover:text-indigo-600">Compression Gear</a>
-                    <a href="blog/index.html" class="text-gray-600 hover:text-indigo-600">Blog</a>
-                    <a href="recovery-apps.html" class="text-gray-600 hover:text-indigo-600">Recovery Apps</a>
-                    <a href="about.html" class="text-gray-600 hover:text-indigo-600">About Us</a>
+
+                <!-- Main Navigation -->
+                <nav class="hidden md:block" id="main-navigation">
+                    <ul class="nav-list flex space-x-6">
+                        <li class="nav-item relative group">
+                            <a href="/categories/massage-guns.html" class="nav-link font-medium text-gray-700 hover:text-indigo-600 py-2 inline-block">Massage Guns <i class="fas fa-chevron-down ml-1 text-xs"></i></a>
+                            <ul class="dropdown-menu absolute left-0 top-full bg-white border rounded-md shadow-md p-2 min-w-max hidden group-hover:block">
+                                <li class="dropdown-item"><a href="/categories/massage-guns.html" class="dropdown-link block px-4 py-2 text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 rounded-md">All Massage Guns</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item"><a href="/categories/foam-rollers.html" class="nav-link font-medium text-gray-700 hover:text-indigo-600 py-2 inline-block">Foam Rollers</a></li>
+                        <li class="nav-item"><a href="/categories/fitness-bands.html" class="nav-link font-medium text-gray-700 hover:text-indigo-600 py-2 inline-block">Fitness Bands</a></li>
+                        <li class="nav-item"><a href="/categories/compression-gear.html" class="nav-link font-medium text-gray-700 hover:text-indigo-600 py-2 inline-block">Compression Gear</a></li>
+                        <li class="nav-item"><a href="/blog/index.html" class="nav-link font-medium text-gray-700 hover:text-indigo-600 py-2 inline-block">Blog</a></li>
+                    </ul>
                 </nav>
+
+                <div class="flex items-center">
+                    <a href="#" class="text-gray-700 hover:text-indigo-600 mr-4">
+                        <i class="fas fa-search"></i>
+                    </a>
+                    <a href="/admin/index.html" class="text-gray-700 hover:text-indigo-600 mr-4" title="Admin Dashboard">
+                        <i class="fas fa-cog"></i>
+                    </a>
+                    <button class="md:hidden text-gray-700 hover:text-indigo-600">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-bg text-white py-16">
+    <section class="hero-bg text-white py-24">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6" style="font-size: 48px;">Discover the Best Home Fitness Recovery Products</h1>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">
+                Find the perfect tools to accelerate recovery, reduce soreness, and enhance your performance with our expert reviews and guides.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <a href="#product-categories" class="bg-white text-indigo-600 hover:bg-gray-100 font-medium py-3 px-8 rounded-md transition duration-300">
+                    Explore Top Picks
+                </a>
+            </div>
+            <p class="text-xs text-white text-opacity-80 mt-16 max-w-2xl mx-auto">
+                Affiliate Disclosure: We may earn commissions from qualifying purchases at no cost to you.
+            </p>
+        </div>
+    </section>
+
+    <!-- Product Categories Section -->
+    <section id="product-categories" class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <div class="max-w-4xl mx-auto text-center">
-                <h1 class="text-4xl font-bold mb-4">Your Trusted Source for Fitness Recovery</h1>
-                <p class="text-xl mb-6">
-                    Expert reviews, comprehensive guides, and honest recommendations for the best recovery products
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Recovery Product Categories</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    Explore our top-rated fitness recovery tools to help you recover faster, reduce soreness, and improve your performance.
                 </p>
-                <div class="mt-8">
-                    <a href="newsletter.html" class="bg-white text-indigo-600 hover:bg-gray-100 font-bold py-3 px-6 rounded-lg inline-block transition duration-300 mr-4">
-                        Join Our Newsletter
-                    </a>
-                    <a href="products/comparison.html" class="bg-indigo-700 hover:bg-indigo-800 text-white font-bold py-3 px-6 rounded-lg inline-block transition duration-300 border border-white">
-                        Compare Products
-                    </a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Category 1: Massage Guns -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+                    <div class="h-64 bg-gray-200 relative">
+                        <img src="https://ext.same-assets.com/30303030/massage-gun-category.jpg" alt="Person using a massage gun" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                        <h3 class="absolute bottom-4 left-4 text-white text-2xl font-bold">Massage Guns</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Percussive therapy devices that target muscle soreness and accelerate recovery through deep tissue massage.</p>
+                        <a href="/categories/massage-guns.html" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                            See our top picks <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Category 2: Foam Rollers -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+                    <div class="h-64 bg-gray-200 relative">
+                        <img src="https://ext.same-assets.com/30303031/foam-roller-category.jpg" alt="Person using a foam roller" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                        <h3 class="absolute bottom-4 left-4 text-white text-2xl font-bold">Foam Rollers</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Self-myofascial release tools that help break up knots, increase blood flow, and improve mobility and flexibility.</p>
+                        <a href="/categories/foam-rollers.html" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                            Compare top models <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Category 3: Fitness Bands -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition duration-300 hover:scale-105">
+                    <div class="h-64 bg-gray-200 relative">
+                        <img src="https://ext.same-assets.com/30303032/fitness-bands-category.jpg" alt="Person using fitness bands" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                        <h3 class="absolute bottom-4 left-4 text-white text-2xl font-bold">Fitness Bands</h3>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-600 mb-4">Versatile resistance tools perfect for mobility work, strength training, and rehabilitation exercises.</p>
+                        <a href="/categories/fitness-bands.html" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
+                            View all reviewed bands <i class="fas fa-arrow-right ml-2"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Product Categories -->
-    <section class="py-16 bg-white">
+    <!-- Our Process Section -->
+    <section class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Explore Product Categories</h2>
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Process</h2>
+                <p class="text-lg text-gray-600 max-w-3xl mx-auto">
+                    We're committed to providing you with the most reliable, data-driven recommendations for fitness recovery products.
+                </p>
+            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-                <!-- Massage Guns -->
-                <a href="products/massage-guns.html" class="group">
-                    <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden border border-gray-200 h-full transition-all duration-300 hover:shadow-lg">
-                        <div class="h-48 bg-gray-200 relative overflow-hidden">
-                            <img src="https://ext.same-assets.com/4260193750/159753842.jpeg" alt="Massage Guns" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-bold text-xl mb-2 text-gray-800 group-hover:text-indigo-600 transition-colors">Massage Guns</h3>
-                            <p class="text-gray-600 mb-4">Percussion therapy devices for targeted muscle relief and recovery</p>
-                            <span class="text-indigo-600 font-medium flex items-center">
-                                Explore Products <i class="fas fa-arrow-right ml-2"></i>
-                            </span>
-                        </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Process Step 1 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex justify-center mb-6">
+                        <span class="bg-indigo-100 text-indigo-600 p-3 rounded-full">
+                            <i class="fas fa-search text-2xl"></i>
+                        </span>
                     </div>
-                </a>
+                    <h3 class="text-xl font-bold text-center mb-4">Research & Review</h3>
+                    <p class="text-gray-600 text-center">
+                        We gather data from thousands of customer reviews, expert opinions, and performance tests to identify top products in each category.
+                    </p>
+                </div>
 
-                <!-- Foam Rollers -->
-                <a href="products/foam-rollers.html" class="group">
-                    <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden border border-gray-200 h-full transition-all duration-300 hover:shadow-lg">
-                        <div class="h-48 bg-gray-200 relative overflow-hidden">
-                            <img src="https://ext.same-assets.com/2108554563/1470587620.jpeg" alt="Foam Rollers" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-bold text-xl mb-2 text-gray-800 group-hover:text-indigo-600 transition-colors">Foam Rollers</h3>
-                            <p class="text-gray-600 mb-4">Self-myofascial release tools for improved mobility and flexibility</p>
-                            <span class="text-indigo-600 font-medium flex items-center">
-                                Explore Products <i class="fas fa-arrow-right ml-2"></i>
-                            </span>
-                        </div>
+                <!-- Process Step 2 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex justify-center mb-6">
+                        <span class="bg-indigo-100 text-indigo-600 p-3 rounded-full">
+                            <i class="fas fa-chart-bar text-2xl"></i>
+                        </span>
                     </div>
-                </a>
+                    <h3 class="text-xl font-bold text-center mb-4">Analysis & Comparison</h3>
+                    <p class="text-gray-600 text-center">
+                        Our advanced algorithms compare quality, performance, durability, and value to generate objective product rankings tailored to different needs.
+                    </p>
+                </div>
 
-                <!-- Fitness Bands -->
-                <a href="products/fitness-bands.html" class="group">
-                    <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden border border-gray-200 h-full transition-all duration-300 hover:shadow-lg">
-                        <div class="h-48 bg-gray-200 relative overflow-hidden">
-                            <img src="https://ext.same-assets.com/2560824938/1799041335.jpeg" alt="Fitness Bands" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-bold text-xl mb-2 text-gray-800 group-hover:text-indigo-600 transition-colors">Fitness Bands</h3>
-                            <p class="text-gray-600 mb-4">Resistance bands for strength training and rehabilitation</p>
-                            <span class="text-indigo-600 font-medium flex items-center">
-                                Explore Products <i class="fas fa-arrow-right ml-2"></i>
-                            </span>
-                        </div>
+                <!-- Process Step 3 -->
+                <div class="bg-white p-8 rounded-lg shadow-md">
+                    <div class="flex justify-center mb-6">
+                        <span class="bg-indigo-100 text-indigo-600 p-3 rounded-full">
+                            <i class="fas fa-thumbs-up text-2xl"></i>
+                        </span>
                     </div>
-                </a>
-
-                <!-- Compression Gear -->
-                <a href="products/compression-gear.html" class="group">
-                    <div class="bg-gray-50 rounded-lg shadow-md overflow-hidden border border-gray-200 h-full transition-all duration-300 hover:shadow-lg">
-                        <div class="h-48 bg-gray-200 relative overflow-hidden">
-                            <img src="https://ext.same-assets.com/3220712056/3156167785.jpeg" alt="Compression Gear" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-bold text-xl mb-2 text-gray-800 group-hover:text-indigo-600 transition-colors">Compression Gear</h3>
-                            <p class="text-gray-600 mb-4">Graduated compression wear for enhanced circulation and recovery</p>
-                            <span class="text-indigo-600 font-medium flex items-center">
-                                Explore Products <i class="fas fa-arrow-right ml-2"></i>
-                            </span>
-                        </div>
-                    </div>
-                </a>
+                    <h3 class="text-xl font-bold text-center mb-4">Recommendations</h3>
+                    <p class="text-gray-600 text-center">
+                        We provide unbiased, evidence-based recommendations that help you find the perfect recovery products for your specific needs and budget.
+                    </p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Blog & Resources -->
-    <section class="py-16 bg-gray-50">
+    <!-- About Us Section -->
+    <section class="py-20 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12">Latest Recovery Guides</h2>
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-12">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-6">About Us</h2>
+                    <p class="text-lg text-gray-600 mb-6">
+                        Recovery Essentials was founded by a team of fitness enthusiasts, physical therapists, and product testers who were frustrated with the lack of honest, thorough recovery product reviews.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-6">
+                        We've tested hundreds of products and spent thousands of hours researching the science of recovery to help you make informed decisions about which tools will actually help you recover faster and perform better.
+                    </p>
+                    <p class="text-lg text-gray-600 mb-8">
+                        Our mission is to cut through the marketing hype and deliver honest, science-backed recommendations for recovery tools that actually work.
+                    </p>
+                    <a href="/about.html" class="inline-flex items-center text-indigo-600 font-medium hover:text-indigo-800">
+                        Learn more about our team <i class="fas fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://ext.same-assets.com/30303033/team-testing-recovery-tools.jpg" alt="Our team testing recovery tools" class="rounded-lg shadow-xl w-full h-auto">
+                </div>
+            </div>
+        </div>
+    </section>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                <!-- Article 1 -->
-                <a href="blog/foam-rolling-guide.html" class="group">
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 h-full">
-                        <div class="h-48 bg-gray-200 relative overflow-hidden">
-                            <img src="https://ext.same-assets.com/2108554563/1470587620.jpeg" alt="Foam Rolling Guide" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-bold text-xl mb-2 group-hover:text-indigo-600 transition-colors">The Ultimate Foam Rolling Guide</h3>
-                            <p class="text-gray-600 mb-3">Master self-myofascial release techniques for faster recovery and improved mobility.</p>
-                            <div class="flex items-center text-sm text-gray-500">
-                                <span>May 15, 2023</span>
-                                <span class="mx-2">•</span>
-                                <span>12 min read</span>
+    <!-- Trust & Affiliate Disclosure Section -->
+    <section class="py-20 bg-indigo-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Why Trust Us?</h2>
+
+            <div class="flex flex-col md:flex-row gap-10">
+                <!-- Our Commitment -->
+                <div class="md:w-1/2">
+                    <ul class="space-y-6">
+                        <li class="flex">
+                            <span class="flex-shrink-0 text-green-500 mr-3">
+                                <i class="fas fa-check-circle text-xl"></i>
+                            </span>
+                            <div>
+                                <h3 class="font-bold text-lg text-gray-900 mb-2">Thorough Testing</h3>
+                                <p class="text-gray-600">We personally test and evaluate many of the products we recommend to ensure they meet our high standards.</p>
                             </div>
+                        </li>
+                        <li class="flex">
+                            <span class="flex-shrink-0 text-green-500 mr-3">
+                                <i class="fas fa-check-circle text-xl"></i>
+                            </span>
+                            <div>
+                                <h3 class="font-bold text-lg text-gray-900 mb-2">Data-Driven Approach</h3>
+                                <p class="text-gray-600">Our recommendations are based on analysis of verified user experiences, expert opinions, and robust performance data.</p>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <span class="flex-shrink-0 text-green-500 mr-3">
+                                <i class="fas fa-check-circle text-xl"></i>
+                            </span>
+                            <div>
+                                <h3 class="font-bold text-lg text-gray-900 mb-2">Regular Updates</h3>
+                                <p class="text-gray-600">We continuously update our reviews and recommendations to reflect new products, technologies, and user feedback.</p>
+                            </div>
+                        </li>
+                        <li class="flex">
+                            <span class="flex-shrink-0 text-green-500 mr-3">
+                                <i class="fas fa-check-circle text-xl"></i>
+                            </span>
+                            <div>
+                                <h3 class="font-bold text-lg text-gray-900 mb-2">Expert Contributors</h3>
+                                <p class="text-gray-600">Our content is created by fitness professionals, physical therapists, and recovery specialists.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Affiliate Disclosure -->
+                <div class="md:w-1/2 bg-white p-8 rounded-lg shadow-md">
+                    <h3 class="font-bold text-xl text-gray-900 mb-4">Affiliate Disclosure</h3>
+                    <p class="text-gray-600 mb-4">
+                        Recovery Essentials is reader-supported. When you purchase through links on our site, we may earn an affiliate commission at no additional cost to you. This helps us maintain our rigorous testing and editorial standards.
+                    </p>
+                    <p class="text-gray-600 mb-4">
+                        Our product recommendations are based solely on our evaluation process, not on which companies offer affiliate programs. We never accept free products or payment for positive reviews.
+                    </p>
+                    <p class="text-gray-600">
+                        Our mission is to help you find the best products for your needs, not to sell you on specific brands or models.
+                    </p>
+                    <div class="mt-6">
+                        <a href="/affiliate-disclosure.html" class="text-indigo-600 hover:text-indigo-800 font-medium">
+                            Read our full affiliate disclosure →
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Latest Articles Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-gray-900 mb-12 text-center">Latest Recovery Tips</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <article class="bg-white rounded-lg overflow-hidden shadow-md transition transform hover:shadow-xl">
+                    <div class="h-48 bg-gray-200 relative">
+                        <img src="https://ext.same-assets.com/30303034/muscle-recovery-science.jpg" alt="Science of Muscle Recovery" class="w-full h-full object-cover">
+                        <span class="absolute top-4 left-4 bg-indigo-600 text-white text-xs py-1 px-2 rounded-md">
+                            Recovery Science
+                        </span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2">
+                            <a href="/blog/recovery-frequency.html" class="text-gray-900 hover:text-indigo-600">
+                                The Science Behind Muscle Recovery
+                            </a>
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Understand the physiological processes behind muscle recovery and how to optimize them for better results.
+                        </p>
+                        <div class="flex justify-between text-gray-500 text-sm">
+                            <span>April 15, 2023</span>
+                            <span>8 min read</span>
                         </div>
                     </div>
-                </a>
+                </article>
 
                 <!-- Article 2 -->
-                <a href="blog/massage-gun-techniques.html" class="group">
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 h-full">
-                        <div class="h-48 bg-gray-200 relative overflow-hidden">
-                            <img src="https://ext.same-assets.com/4260193750/159753842.jpeg" alt="Massage Gun Techniques" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-bold text-xl mb-2 group-hover:text-indigo-600 transition-colors">6 Effective Massage Gun Techniques</h3>
-                            <p class="text-gray-600 mb-3">Learn how to properly target different muscle groups with your percussion massage device.</p>
-                            <div class="flex items-center text-sm text-gray-500">
-                                <span>May 2, 2023</span>
-                                <span class="mx-2">•</span>
-                                <span>8 min read</span>
-                            </div>
+                <article class="bg-white rounded-lg overflow-hidden shadow-md transition transform hover:shadow-xl">
+                    <div class="h-48 bg-gray-200 relative">
+                        <img src="https://ext.same-assets.com/30303035/choosing-massage-gun.jpg" alt="Person choosing massage gun" class="w-full h-full object-cover">
+                        <span class="absolute top-4 left-4 bg-indigo-600 text-white text-xs py-1 px-2 rounded-md">
+                            Buying Guide
+                        </span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2">
+                            <a href="/blog/massage-gun-techniques.html" class="text-gray-900 hover:text-indigo-600">
+                                How to Choose the Right Massage Gun
+                            </a>
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Discover the key features to consider when selecting a massage gun for your specific recovery needs.
+                        </p>
+                        <div class="flex justify-between text-gray-500 text-sm">
+                            <span>May 3, 2023</span>
+                            <span>6 min read</span>
                         </div>
                     </div>
-                </a>
+                </article>
 
                 <!-- Article 3 -->
-                <a href="blog/active-vs-passive-recovery.html" class="group">
-                    <div class="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 h-full">
-                        <div class="h-48 bg-gray-200 relative overflow-hidden">
-                            <img src="https://ext.same-assets.com/3962596208/3301349755.jpeg" alt="Active vs Passive Recovery" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
-                        </div>
-                        <div class="p-6">
-                            <h3 class="font-bold text-xl mb-2 group-hover:text-indigo-600 transition-colors">Active vs. Passive Recovery</h3>
-                            <p class="text-gray-600 mb-3">Understanding when to rest and when to move for optimal recovery results.</p>
-                            <div class="flex items-center text-sm text-gray-500">
-                                <span>April 18, 2023</span>
-                                <span class="mx-2">•</span>
-                                <span>7 min read</span>
-                            </div>
+                <article class="bg-white rounded-lg overflow-hidden shadow-md transition transform hover:shadow-xl">
+                    <div class="h-48 bg-gray-200 relative">
+                        <img src="https://ext.same-assets.com/30303036/runner-recovery-routine.jpg" alt="Runner stretching" class="w-full h-full object-cover">
+                        <span class="absolute top-4 left-4 bg-indigo-600 text-white text-xs py-1 px-2 rounded-md">
+                            Running Recovery
+                        </span>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold text-xl mb-2">
+                            <a href="/blog/active-vs-passive-recovery.html" class="text-gray-900 hover:text-indigo-600">
+                                Essential Recovery Routines for Runners
+                            </a>
+                        </h3>
+                        <p class="text-gray-600 mb-4">
+                            Follow these research-backed recovery routines to enhance performance and prevent common running injuries.
+                        </p>
+                        <div class="flex justify-between text-gray-500 text-sm">
+                            <span>June 21, 2023</span>
+                            <span>10 min read</span>
                         </div>
                     </div>
-                </a>
+                </article>
             </div>
 
-            <div class="text-center mt-12">
-                <a href="blog/index.html" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg inline-block transition duration-300">
+            <div class="mt-12 text-center">
+                <a href="/blog/index.html" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-8 rounded-md transition duration-300">
                     View All Articles
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Recovery Apps -->
-    <section class="py-16 bg-white">
-        <div class="container mx-auto px-4 max-w-6xl">
-            <div class="flex flex-col md:flex-row items-center gap-8">
-                <div class="md:w-1/2">
-                    <h2 class="text-3xl font-bold mb-6">Digital Recovery Tools</h2>
-                    <p class="text-gray-600 mb-6">
-                        Recovery happens not only through physical tools but also through smart planning, tracking, and guidance. Mobile recovery apps can be powerful companions to your physical recovery tools.
-                    </p>
-                    <p class="text-gray-600 mb-8">
-                        We've tested dozens of mobile applications focusing on different aspects of recovery to bring you the most effective digital tools that complement your physical recovery arsenal.
-                    </p>
-                    <a href="recovery-apps.html" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
-                        Explore Recovery Apps <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-                <div class="md:w-1/2">
-                    <img src="https://ext.same-assets.com/2783942035/2491380635.jpeg" alt="Recovery Apps" class="rounded-lg shadow-md w-full">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Us -->
-    <section class="py-16 bg-gray-50">
-        <div class="container mx-auto px-4 max-w-6xl">
-            <div class="flex flex-col md:flex-row-reverse items-center gap-8">
-                <div class="md:w-1/2">
-                    <h2 class="text-3xl font-bold mb-6">About Recovery Essentials</h2>
-                    <p class="text-gray-600 mb-6">
-                        Recovery Essentials was founded in 2019 by a team of fitness professionals, sports therapists, and product testing experts with a shared mission: to help people recover better through honest, thorough product reviews and evidence-based guidance.
-                    </p>
-                    <p class="text-gray-600 mb-8">
-                        We purchase all products we review at retail prices. We do not accept free products or samples from manufacturers to ensure our reviews remain completely unbiased.
-                    </p>
-                    <a href="about.html" class="text-indigo-600 hover:text-indigo-800 font-medium flex items-center">
-                        Learn More About Our Team <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-                <div class="md:w-1/2">
-                    <img src="https://ext.same-assets.com/4181642789/575270868.jpeg" alt="Our Team" class="rounded-lg shadow-md w-full">
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Newsletter Sign-up -->
-    <section class="py-16 bg-indigo-600 text-white">
-        <div class="container mx-auto px-4 max-w-3xl text-center">
+    <!-- Newsletter Section -->
+    <section class="py-20 bg-indigo-600 text-white">
+        <div class="container mx-auto px-4 text-center">
             <h2 class="text-3xl font-bold mb-4">Get Recovery Tips & Exclusive Deals</h2>
-            <p class="text-indigo-100 mb-8">
-                Join thousands of fitness enthusiasts who receive our expertly curated recovery tips, exclusive deals, and evidence-based guidance every week.
+            <p class="text-lg text-indigo-100 mb-8 max-w-2xl mx-auto">
+                Subscribe to our newsletter to receive the latest recovery tips, product recommendations, and exclusive deals straight to your inbox.
             </p>
-            <div class="flex flex-col sm:flex-row gap-3">
-                <input type="email" placeholder="Your email address" class="flex-grow px-4 py-3 rounded-md text-gray-800" />
-                <button class="bg-indigo-800 hover:bg-indigo-900 font-medium px-6 py-3 rounded-md whitespace-nowrap">
-                    Subscribe Now
-                </button>
-            </div>
-            <p class="text-xs text-indigo-200 mt-4">
-                We respect your privacy. Unsubscribe anytime. <a href="privacy.html" class="underline">Privacy Policy</a>
-            </p>
+
+            <form class="max-w-md mx-auto" action="/newsletter.html" method="get">
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Your email address"
+                        class="flex-grow px-4 py-3 rounded-md text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-300"
+                        required
+                    >
+                    <button
+                        type="submit"
+                        class="bg-indigo-800 hover:bg-indigo-900 text-white font-medium py-3 px-6 rounded-md transition duration-300"
+                    >
+                        Subscribe Now
+                    </button>
+                </div>
+                <p class="text-xs text-indigo-200 mt-4">
+                    By subscribing, you agree to our privacy policy. We'll never share your information.
+                </p>
+            </form>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
+    <!-- Footer Section -->
+    <footer class="bg-gray-900 text-white py-16">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Company Information -->
                 <div>
-                    <div class="flex items-center gap-2 mb-6">
+                    <div class="flex items-center mb-6">
                         <div class="w-10 h-10 bg-indigo-600 flex items-center justify-center rounded">
-                            <span class="font-bold">RE</span>
+                            <span class="text-white font-bold">RE</span>
                         </div>
-                        <div>
+                        <div class="ml-2">
                             <div class="font-bold">Recovery Essentials</div>
-                            <div class="text-xs text-gray-400">Home Fitness Recovery</div>
                         </div>
                     </div>
-                    <p class="text-gray-400 text-sm">
-                        Your trusted source for home fitness recovery product reviews and recommendations.
+                    <p class="text-gray-400 mb-6">
+                        Providing science-backed recommendations for the best fitness recovery products on the market.
                     </p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition">
+                            <i class="fab fa-pinterest"></i>
+                        </a>
+                    </div>
                 </div>
 
+                <!-- Product Categories -->
                 <div>
-                    <h3 class="font-bold text-lg mb-4">Product Categories</h3>
-                    <ul class="space-y-2">
-                        <li><a href="products/massage-guns.html" class="text-gray-400 hover:text-white">Massage Guns</a></li>
-                        <li><a href="products/foam-rollers.html" class="text-gray-400 hover:text-white">Foam Rollers</a></li>
-                        <li><a href="products/fitness-bands.html" class="text-gray-400 hover:text-white">Fitness Bands</a></li>
-                        <li><a href="products/compression-gear.html" class="text-gray-400 hover:text-white">Compression Gear</a></li>
+                    <h3 class="text-lg font-bold mb-6">Product Categories</h3>
+                    <ul class="space-y-3">
+                        <li><a href="/categories/massage-guns.html" class="text-gray-400 hover:text-white transition">Massage Guns</a></li>
+                        <li><a href="/categories/foam-rollers.html" class="text-gray-400 hover:text-white transition">Foam Rollers</a></li>
+                        <li><a href="/categories/fitness-bands.html" class="text-gray-400 hover:text-white transition">Fitness Bands</a></li>
+                        <li><a href="/categories/compression-gear.html" class="text-gray-400 hover:text-white transition">Compression Gear</a></li>
+                        <li><a href="/products/comparison.html" class="text-gray-400 hover:text-white transition">Product Comparisons</a></li>
                     </ul>
                 </div>
 
+                <!-- Resources -->
                 <div>
-                    <h3 class="font-bold text-lg mb-4">Resources</h3>
-                    <ul class="space-y-2">
-                        <li><a href="blog/index.html" class="text-gray-400 hover:text-white">Recovery Blog</a></li>
-                        <li><a href="recovery-apps.html" class="text-gray-400 hover:text-white">Recovery Apps</a></li>
-                        <li><a href="blog/foam-rolling-guide.html" class="text-gray-400 hover:text-white">Foam Rolling Guide</a></li>
-                        <li><a href="blog/massage-gun-techniques.html" class="text-gray-400 hover:text-white">Massage Gun Techniques</a></li>
-                        <li><a href="newsletter.html" class="text-gray-400 hover:text-white">Newsletter</a></li>
+                    <h3 class="text-lg font-bold mb-6">Resources</h3>
+                    <ul class="space-y-3">
+                        <li><a href="/blog/index.html" class="text-gray-400 hover:text-white transition">Recovery Blog</a></li>
+                        <li><a href="/blog/foam-rolling-guide.html" class="text-gray-400 hover:text-white transition">Guides</a></li>
+                        <li><a href="/products/comparison.html" class="text-gray-400 hover:text-white transition">Comparisons</a></li>
+                        <li><a href="/recovery-apps.html" class="text-gray-400 hover:text-white transition">Recovery Apps</a></li>
+                        <li><a href="/newsletter.html" class="text-gray-400 hover:text-white transition">Newsletter</a></li>
                     </ul>
                 </div>
 
+                <!-- Company -->
                 <div>
-                    <h3 class="font-bold text-lg mb-4">Company</h3>
-                    <ul class="space-y-2">
-                        <li><a href="about.html" class="text-gray-400 hover:text-white">About Us</a></li>
-                        <li><a href="contact.html" class="text-gray-400 hover:text-white">Contact</a></li>
-                        <li><a href="privacy.html" class="text-gray-400 hover:text-white">Privacy Policy</a></li>
-                        <li><a href="affiliate-disclosure.html" class="text-gray-400 hover:text-white">Affiliate Disclosure</a></li>
-                        <li><a href="admin/index.html" class="text-gray-400 hover:text-white">Admin</a></li>
+                    <h3 class="text-lg font-bold mb-6">Company</h3>
+                    <ul class="space-y-3">
+                        <li><a href="/about.html" class="text-gray-400 hover:text-white transition">About Us</a></li>
+                        <li><a href="/contact.html" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                        <li><a href="/privacy.html" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+                        <li><a href="/affiliate-disclosure.html" class="text-gray-400 hover:text-white transition">Affiliate Disclosure</a></li>
+                        <li><a href="/terms.html" class="text-gray-400 hover:text-white transition">Terms of Service</a></li>
                     </ul>
                 </div>
             </div>
 
-            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
-                <p>&copy; 2023 Recovery Essentials. All rights reserved.</p>
-                <p class="mt-2">
-                    Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates.
-                </p>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-gray-400 text-sm">
+                <p>© 2023 Recovery Essentials. All rights reserved.</p>
+                <p class="mt-2">Amazon and the Amazon logo are trademarks of Amazon.com, Inc. or its affiliates.</p>
             </div>
         </div>
     </footer>
 
-    <!-- Amazon API Integration -->
-    <script src="js/amazon-api.js"></script>
+    <!-- Include JavaScript -->
+    <script src="/js/common.js"></script>
+
+    <!-- Mobile Menu Toggle Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('button.md\\:hidden');
+            const mainNavigation = document.getElementById('main-navigation');
+
+            if (menuToggle && mainNavigation) {
+                // Create mobile menu container
+                const mobileMenu = document.createElement('div');
+                mobileMenu.id = 'mobile-menu';
+                mobileMenu.className = 'fixed inset-0 bg-gray-900 bg-opacity-90 z-50 flex items-center justify-center transform transition-transform duration-300 translate-x-full';
+
+                // Clone navigation for mobile
+                const mobileNav = mainNavigation.querySelector('ul.nav-list').cloneNode(true);
+                mobileNav.className = 'flex flex-col space-y-4 text-white text-center text-xl';
+
+                // Update dropdown menus to be always visible on mobile
+                const dropdowns = mobileNav.querySelectorAll('.dropdown-menu');
+                dropdowns.forEach(dropdown => {
+                    dropdown.classList.remove('hidden', 'group-hover:block', 'absolute');
+                    dropdown.classList.add('static', 'mt-2', 'mb-2', 'bg-gray-800', 'rounded-md');
+                });
+
+                // Add close button
+                const closeButton = document.createElement('button');
+                closeButton.className = 'absolute top-4 right-4 text-white text-2xl';
+                closeButton.innerHTML = '<i class="fas fa-times"></i>';
+
+                // Add components to mobile menu
+                mobileMenu.appendChild(closeButton);
+                mobileMenu.appendChild(mobileNav);
+                document.body.appendChild(mobileMenu);
+
+                // Toggle mobile menu
+                menuToggle.addEventListener('click', function() {
+                    mobileMenu.classList.remove('translate-x-full');
+                });
+
+                // Close mobile menu
+                closeButton.addEventListener('click', function() {
+                    mobileMenu.classList.add('translate-x-full');
+                });
+            }
+        });
+    </script>
 </body>
 </html>

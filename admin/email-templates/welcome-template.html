@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Recovery Essentials</title>
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333333;
+      background-color: #f8f8f8;
+      line-height: 1.6;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+    }
+    .email-header {
+      padding: 30px 20px;
+      text-align: center;
+      background-color: #6366f1;
+      color: white;
+    }
+    .email-header img {
+      max-width: 200px;
+      height: auto;
+    }
+    .email-body {
+      padding: 30px 20px;
+    }
+    .email-footer {
+      padding: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #777777;
+      background-color: #f1f1f1;
+    }
+    h1 {
+      color: #6366f1;
+      margin-top: 0;
+    }
+    .button {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: #6366f1;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+    .stats-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 30px 0;
+      text-align: center;
+    }
+    .stat-box {
+      flex: 1;
+      padding: 15px;
+      border-radius: 5px;
+      border: 1px solid #e5e7eb;
+      margin: 0 5px;
+    }
+    .stat-value {
+      font-size: 24px;
+      font-weight: bold;
+      color: #6366f1;
+      display: block;
+      margin-bottom: 5px;
+    }
+    .profile-image {
+      border-radius: 50%;
+      margin-right: 10px;
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+    }
+    .divider {
+      height: 1px;
+      background-color: #e5e7eb;
+      margin: 25px 0;
+    }
+    .social-links {
+      margin-top: 20px;
+    }
+    .social-icon {
+      margin: 0 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="email-header">
+      <img src="https://same-assets.com/recovery-essentials-logo.png" alt="Recovery Essentials Logo">
+      <h2>Welcome to Recovery Essentials</h2>
+    </div>
+
+    <div class="email-body">
+      <h1>Hello {{firstName}},</h1>
+
+      <p>Welcome to Recovery Essentials! We're thrilled to have you join our community of health and fitness enthusiasts focused on optimizing their recovery.</p>
+
+      <p>Your account has been successfully created and you're now ready to explore our collection of premium recovery tools and resources.</p>
+
+      <div style="text-align: center;">
+        <a href="{{accountUrl}}" class="button">Explore Your Account</a>
+      </div>
+
+      <h3>Why Recovery Matters:</h3>
+
+      <div class="stats-container">
+        <div class="stat-box">
+          <span class="stat-value">30%</span>
+          <span>Faster Recovery</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-value">25%</span>
+          <span>Injury Reduction</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-value">40%</span>
+          <span>Performance Boost</span>
+        </div>
+      </div>
+
+      <p>As a new member, enjoy <strong>15% off</strong> your first order with code: <strong>WELCOME15</strong></p>
+
+      <div style="text-align: center;">
+        <a href="{{shopUrl}}" class="button">Shop Now</a>
+      </div>
+
+      <div class="divider"></div>
+
+      <h3>Get Started With These Resources:</h3>
+      <ul>
+        <li><a href="{{guideUrl}}">Complete Recovery Guide</a> - Essential techniques and tools</li>
+        <li><a href="{{blogUrl}}">Recovery Blog</a> - Latest research and tips</li>
+        <li><a href="{{communityUrl}}">Join Our Community</a> - Connect with other recovery enthusiasts</li>
+      </ul>
+
+      <div class="divider"></div>
+
+      <table width="100%">
+        <tr>
+          <td width="70" valign="top">
+            <img src="https://same-assets.com/profile-image.jpg" alt="Profile" class="profile-image">
+          </td>
+          <td valign="top">
+            <p>"We created Recovery Essentials to help active people like you optimize their recovery and get back to doing what they love, faster."</p>
+            <p><strong>Alex Johnson</strong><br>Founder, Recovery Essentials</p>
+          </td>
+        </tr>
+      </table>
+
+      <div class="social-links" style="text-align: center;">
+        <a href="#" class="social-icon"><img src="https://same-assets.com/icon-facebook.png" alt="Facebook" width="32"></a>
+        <a href="#" class="social-icon"><img src="https://same-assets.com/icon-instagram.png" alt="Instagram" width="32"></a>
+        <a href="#" class="social-icon"><img src="https://same-assets.com/icon-twitter.png" alt="Twitter" width="32"></a>
+        <a href="#" class="social-icon"><img src="https://same-assets.com/icon-youtube.png" alt="YouTube" width="32"></a>
+      </div>
+    </div>
+
+    <div class="email-footer">
+      <p>&copy; 2025 Recovery Essentials. All rights reserved.</p>
+      <p>123 Recovery Street, Fitness City, FC 12345</p>
+      <p>
+        <a href="{{preferencesUrl}}">Email Preferences</a> |
+        <a href="{{unsubscribeUrl}}">Unsubscribe</a> |
+        <a href="{{privacyUrl}}">Privacy Policy</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

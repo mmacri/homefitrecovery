@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>[CATEGORY_NAME] Articles & Guides - Recovery Essentials</title>
+    <meta name="description" content="Explore our [CATEGORY_NAME] articles, product reviews, and expert advice to improve your recovery and fitness results.">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header will be included here -->
+    <div id="header-placeholder"></div>
+
+    <!-- Category Hero Section -->
+    <div id="category-hero" class="relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-indigo-800 to-purple-900 opacity-90 z-10"></div>
+        <div class="absolute inset-0 bg-cover bg-center z-0" id="category-bg-image" style="background-image: url('https://ext.same-assets.com/1001010126/placeholder-category.jpg')"></div>
+        <div class="relative container mx-auto px-4 py-20 z-20">
+            <h1 class="text-4xl md:text-5xl font-bold text-white mb-4" id="category-title">[CATEGORY_NAME]</h1>
+            <p class="text-xl text-white opacity-90 max-w-2xl" id="category-description">[CATEGORY_DESCRIPTION]</p>
+        </div>
+    </div>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="bg-gray-100 py-2">
+        <div class="container mx-auto px-4">
+            <nav class="text-sm" aria-label="Breadcrumb">
+                <ol class="list-none p-0 inline-flex">
+                    <li class="flex items-center">
+                        <a href="/" class="text-gray-600 hover:text-indigo-600">Home</a>
+                        <svg class="fill-current w-3 h-3 mx-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg>
+                    </li>
+                    <li class="flex items-center">
+                        <a href="/blog/index.html" class="text-gray-600 hover:text-indigo-600">Blog</a>
+                        <svg class="fill-current w-3 h-3 mx-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg>
+                    </li>
+                    <li class="text-indigo-600" id="breadcrumb-category">[CATEGORY_NAME]</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Category Content -->
+    <div class="container mx-auto px-4 py-12">
+        <!-- Category Tag Cloud -->
+        <div class="mb-8">
+            <h2 class="text-xl font-bold text-gray-900 mb-4">Popular Topics</h2>
+            <div id="category-tags" class="flex flex-wrap gap-2">
+                <!-- Tags will be dynamically generated -->
+                <div class="animate-pulse">
+                    <div class="h-8 w-24 bg-gray-300 rounded-full"></div>
+                </div>
+                <div class="animate-pulse">
+                    <div class="h-8 w-32 bg-gray-300 rounded-full"></div>
+                </div>
+                <div class="animate-pulse">
+                    <div class="h-8 w-20 bg-gray-300 rounded-full"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="mb-8">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center space-x-2">
+                    <label for="posts-sort" class="text-sm font-medium text-gray-700">Sort by:</label>
+                    <select id="posts-sort" class="rounded-md border-gray-300 py-2 pl-3 pr-10 text-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500">
+                        <option value="date-desc">Newest First</option>
+                        <option value="date-asc">Oldest First</option>
+                        <option value="title-asc">Title (A-Z)</option>
+                        <option value="title-desc">Title (Z-A)</option>
+                    </select>
+                </div>
+                <div class="relative">
+                    <input type="text" id="post-search" placeholder="Search in this category..." class="w-full rounded-md border-gray-300 py-2 pl-10 pr-4 text-sm focus:border-indigo-500 focus:outline-none focus:ring-indigo-500">
+                    <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
+                        <i class="fas fa-search text-gray-400"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Featured Post (First/Latest/Best Post) -->
+        <div id="featured-post" class="mb-10 bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="grid md:grid-cols-2 h-full">
+                <div class="h-64 md:h-auto bg-gray-300 relative overflow-hidden">
+                    <img id="featured-post-image" src="https://ext.same-assets.com/1001010126/placeholder-blog.jpg" alt="Featured post" class="w-full h-full object-cover transition duration-500 hover:scale-105">
+                </div>
+                <div class="p-8 flex flex-col justify-between">
+                    <div>
+                        <div class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-100 text-indigo-800 mb-2">Featured</div>
+                        <h2 id="featured-post-title" class="text-2xl font-bold text-gray-900 mb-3">Featured Post Title</h2>
+                        <p id="featured-post-excerpt" class="text-gray-600 mb-6">Featured post excerpt goes here. This is a brief description of the featured article.</p>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <span id="featured-post-date" class="text-sm text-gray-500">Jan 1, 2023</span>
+                        <a id="featured-post-link" href="#" class="inline-flex items-center text-indigo-600 hover:text-indigo-800">
+                            Read Article
+                            <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Posts Grid -->
+        <div id="category-posts-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Posts will be dynamically added here -->
+            <div class="animate-pulse">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden h-96">
+                    <div class="bg-gray-300 h-48"></div>
+                    <div class="p-6 space-y-4">
+                        <div class="h-6 bg-gray-300 rounded w-3/4"></div>
+                        <div class="h-4 bg-gray-300 rounded"></div>
+                        <div class="h-4 bg-gray-300 rounded w-5/6"></div>
+                        <div class="h-10 bg-gray-300 rounded mt-4 w-1/3"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="animate-pulse">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden h-96">
+                    <div class="bg-gray-300 h-48"></div>
+                    <div class="p-6 space-y-4">
+                        <div class="h-6 bg-gray-300 rounded w-3/4"></div>
+                        <div class="h-4 bg-gray-300 rounded"></div>
+                        <div class="h-4 bg-gray-300 rounded w-5/6"></div>
+                        <div class="h-10 bg-gray-300 rounded mt-4 w-1/3"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="animate-pulse">
+                <div class="bg-white rounded-lg shadow-md overflow-hidden h-96">
+                    <div class="bg-gray-300 h-48"></div>
+                    <div class="p-6 space-y-4">
+                        <div class="h-6 bg-gray-300 rounded w-3/4"></div>
+                        <div class="h-4 bg-gray-300 rounded"></div>
+                        <div class="h-4 bg-gray-300 rounded w-5/6"></div>
+                        <div class="h-10 bg-gray-300 rounded mt-4 w-1/3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Empty State -->
+        <div id="empty-state" class="hidden py-16 text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-indigo-100 text-indigo-500 mb-4">
+                <i class="fas fa-folder-open text-xl"></i>
+            </div>
+            <h3 class="text-lg font-medium text-gray-900 mb-2">No posts found</h3>
+            <p class="text-gray-500 max-w-md mx-auto">There are currently no posts in this category matching your filters. Try adjusting your search or browse all posts.</p>
+            <div class="mt-6">
+                <a href="/blog/index.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700">
+                    Browse All Posts
+                </a>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div id="pagination" class="mt-12 flex justify-center">
+            <nav class="relative z-0 inline-flex rounded-md shadow-sm -space-x-px" aria-label="Pagination">
+                <a href="#" id="prev-page" class="relative inline-flex items-center px-2 py-2 rounded-l-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                    <span class="sr-only">Previous</span>
+                    <i class="fas fa-chevron-left"></i>
+                </a>
+                <!-- Page numbers will be dynamically added here -->
+                <span id="pagination-numbers"></span>
+                <a href="#" id="next-page" class="relative inline-flex items-center px-2 py-2 rounded-r-md border border-gray-300 bg-white text-sm font-medium text-gray-500 hover:bg-gray-50">
+                    <span class="sr-only">Next</span>
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Related Categories -->
+    <div class="bg-gray-100 py-12">
+        <div class="container mx-auto px-4">
+            <h2 class="text-2xl font-bold text-gray-900 mb-6">Explore Related Categories</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Related categories will be dynamically generated -->
+                <div id="related-categories"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer will be included here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- JavaScript -->
+    <script src="/js/common.js"></script>
+    <script>
+        // Category-specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get category from URL path
+            const path = window.location.pathname;
+            const categorySlug = path.split('/').filter(segment => segment.length > 0).pop().replace('.html', '');
+
+            if (categorySlug) {
+                loadCategoryData(categorySlug);
+            } else {
+                showError('Category not found');
+            }
+
+            // Set up event listeners
+            document.getElementById('posts-sort').addEventListener('change', updatePostsDisplay);
+            document.getElementById('post-search').addEventListener('input', updatePostsDisplay);
+        });
+
+        async function loadCategoryData(categorySlug) {
+            try {
+                // In a real implementation, this would fetch from a server
+                // For demo, we'll use predefined category data
+                const categoryData = getCategoryData(categorySlug);
+
+                if (categoryData) {
+                    displayCategoryInfo(categoryData);
+                    loadCategoryPosts(categoryData);
+                    loadCategoryTags(categoryData);
+                    loadRelatedCategories(categoryData);
+                } else {
+                    showError('Category not found');
+                }
+            } catch (error) {
+                console.error('Error loading category data:', error);
+                showError('Failed to load category data');
+            }
+        }
+
+        function getCategoryData(categorySlug) {
+            // Predefined category data for demo
+            const categories = {
+                'massage-therapy': {
+                    slug: 'massage-therapy',
+                    name: 'Massage Therapy',
+                    description: 'Discover various massage therapy techniques, tools, and benefits for muscle recovery and relaxation.',
+                    image: 'https://ext.same-assets.com/1001010126/massage-therapy-category.jpg',
+                    tags: ['massage-guns', 'percussion-therapy', 'foam-rolling', 'myofascial-release', 'trigger-points', 'recovery', 'soreness'],
+                    related: ['recovery-techniques', 'product-guides', 'injury-prevention']
+                },
+                'recovery-techniques': {
+                    slug: 'recovery-techniques',
+                    name: 'Recovery Techniques',
+                    description: 'Learn the most effective recovery strategies and techniques to speed up muscle repair and improve athletic performance.',
+                    image: 'https://ext.same-assets.com/1001010126/recovery-techniques-category.jpg',
+                    tags: ['active-recovery', 'passive-recovery', 'stretching', 'compression', 'ice-baths', 'heat-therapy', 'hydration'],
+                    related: ['massage-therapy', 'fitness', 'injury-prevention']
+                },
+                'product-guides': {
+                    slug: 'product-guides',
+                    name: 'Product Guides',
+                    description: 'Comprehensive guides and reviews of recovery equipment, tools, and accessories to help you make informed purchases.',
+                    image: 'https://ext.same-assets.com/1001010126/product-guides-category.jpg',
+                    tags: ['massage-guns', 'foam-rollers', 'compression-gear', 'recovery-tools', 'reviews', 'comparisons', 'buying-guide'],
+                    related: ['massage-therapy', 'recovery-techniques', 'fitness']
+                },
+                'fitness': {
+                    slug: 'fitness',
+                    name: 'Fitness',
+                    description: 'Exercise tips, workout routines, and strength training advice to complement your recovery practices.',
+                    image: 'https://ext.same-assets.com/1001010126/fitness-category.jpg',
+                    tags: ['workouts', 'strength-training', 'cardio', 'mobility', 'flexibility', 'performance', 'training-programs'],
+                    related: ['recovery-techniques', 'injury-prevention', 'product-guides']
+                },
+                'injury-prevention': {
+                    slug: 'injury-prevention',
+                    name: 'Injury Prevention',
+                    description: 'Learn strategies and techniques to avoid common fitness-related injuries and promote long-term athletic health.',
+                    image: 'https://ext.same-assets.com/1001010126/injury-prevention-category.jpg',
+                    tags: ['prehab', 'mobility', 'stability', 'form', 'technique', 'assessment', 'safety'],
+                    related: ['recovery-techniques', 'fitness', 'massage-therapy']
+                }
+            };
+
+            return categories[categorySlug] || null;
+        }
+
+        function displayCategoryInfo(categoryData) {
+            // Update page title and meta description
+            document.title = `${categoryData.name} Articles & Guides - Recovery Essentials`;
+
+            // Update hero section
+            document.getElementById('category-title').textContent = categoryData.name;
+            document.getElementById('category-description').textContent = categoryData.description;
+            document.getElementById('breadcrumb-category').textContent = categoryData.name;
+
+            // Set background image
+            if (categoryData.image) {
+                document.getElementById('category-bg-image').style.backgroundImage = `url('${categoryData.image}')`;
+            }
+        }
+
+        async function loadCategoryPosts(categoryData) {
+            try {
+                // In a real implementation, this would fetch from a server
+                // For demo, we'll access blog posts from localStorage
+                const storedPosts = localStorage.getItem('recoveryEssentials_blogPosts');
+                let posts = [];
+
+                if (storedPosts) {
+                    posts = JSON.parse(storedPosts);
+
+                    // Filter posts by category
+                    posts = posts.filter(post => {
+                        // Only show published posts
+                        if (post.status !== 'published') return false;
+
+                        // Check if post is in this category
+                        return post.category === categoryData.slug;
+                    });
+                }
+
+                // Set featured post
+                if (posts.length > 0) {
+                    setFeaturedPost(posts[0]); // Use the first post as featured (or could be most recent)
+
+                    // Remove featured post from regular posts list
+                    posts = posts.slice(1);
+                }
+
+                displayPosts(posts);
+            } catch (error) {
+                console.error('Error loading posts:', error);
+                showError('Failed to load posts');
+            }
+        }
+
+        function setFeaturedPost(post) {
+            const featuredPost = document.getElementById('featured-post');
+            if (!post) {
+                featuredPost.classList.add('hidden');
+                return;
+            }
+
+            featuredPost.classList.remove('hidden');
+
+            // Set featured post data
+            document.getElementById('featured-post-title').textContent = post.title;
+            document.getElementById('featured-post-excerpt').textContent = post.excerpt;
+            document.getElementById('featured-post-date').textContent = formatDate(post.date);
+            document.getElementById('featured-post-link').href = `/blog/${post.slug}.html`;
+
+            // Set featured image
+            if (post.featuredImage) {
+                document.getElementById('featured-post-image').src = post.featuredImage;
+                document.getElementById('featured-post-image').alt = post.title;
+            }
+        }
+
+        function displayPosts(posts) {
+            const container = document.getElementById('category-posts-container');
+            const emptyState = document.getElementById('empty-state');
+            const pagination = document.getElementById('pagination');
+
+            container.innerHTML = '';
+
+            if (posts.length === 0) {
+                container.classList.add('hidden');
+                emptyState.classList.remove('hidden');
+                pagination.classList.add('hidden');
+                return;
+            }
+
+            container.classList.remove('hidden');
+            emptyState.classList.add('hidden');
+
+            // Sort posts based on selected option
+            const sortSelect = document.getElementById('posts-sort');
+            const sortOption = sortSelect.value;
+
+            posts = sortPosts(posts, sortOption);
+
+            // Display posts
+            posts.forEach(post => {
+                const postCard = createPostCard(post);
+                container.appendChild(postCard);
+            });
+
+            // Update pagination (simplified for demo)
+            if (posts.length > 9) {
+                pagination.classList.remove('hidden');
+
+                // In a real implementation, we would implement actual pagination
+                // For demo, just show a simplified version
+                document.getElementById('pagination-numbers').innerHTML = `
+                    <a href="#" class="relative inline-flex items-center px-4 py-2 border border-indigo-500 bg-indigo-600 text-sm font-medium text-white">1</a>
+                    <a href="#" class="relative inline-flex items-center px-4 py-2 border border-gray-300 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50">2</a>
+                `;
+            } else {
+                pagination.classList.add('hidden');
+            }
+        }
+
+        function createPostCard(post) {
+            const article = document.createElement('article');
+            article.className = 'bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1';
+
+            const featuredImage = post.featuredImage || 'https://ext.same-assets.com/1001010126/placeholder-image.jpg';
+
+            article.innerHTML = `
+                <a href="/blog/${post.slug}.html" class="block">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="${featuredImage}" alt="${post.title}" class="w-full h-full object-cover">
+                        <div class="absolute top-0 right-0 bg-indigo-600 text-white text-xs px-2 py-1">
+                            ${formatCategory(post.category)}
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">${post.title}</h3>
+                        <p class="text-gray-600 mb-4 line-clamp-2">${post.excerpt}</p>
+                        <div class="flex items-center justify-between">
+                            <span class="text-sm text-gray-500">${formatDate(post.date)}</span>
+                            <span class="text-indigo-600 hover:text-indigo-800 font-medium">Read more</span>
+                        </div>
+                    </div>
+                </a>
+            `;
+
+            return article;
+        }
+
+        function loadCategoryTags(categoryData) {
+            const container = document.getElementById('category-tags');
+            container.innerHTML = '';
+
+            if (categoryData.tags && categoryData.tags.length > 0) {
+                categoryData.tags.forEach(tagSlug => {
+                    // Convert slug to name
+                    const tagName = tagSlug.split('-').map(word =>
+                        word.charAt(0).toUpperCase() + word.slice(1)
+                    ).join(' ');
+
+                    const tagElement = document.createElement('a');
+                    tagElement.href = `/tags/${tagSlug}.html`;
+                    tagElement.className = 'inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800 hover:bg-indigo-200 transition';
+                    tagElement.innerHTML = `
+                        <i class="fas fa-tag mr-1 text-xs"></i>
+                        ${tagName}
+                    `;
+
+                    container.appendChild(tagElement);
+                });
+            } else {
+                container.innerHTML = '<p class="text-gray-500">No tags found for this category.</p>';
+            }
+        }
+
+        function loadRelatedCategories(categoryData) {
+            const container = document.getElementById('related-categories');
+            container.innerHTML = '';
+
+            if (categoryData.related && categoryData.related.length > 0) {
+                categoryData.related.forEach(relatedSlug => {
+                    const relatedCategory = getCategoryData(relatedSlug);
+                    if (relatedCategory) {
+                        const categoryCard = document.createElement('a');
+                        categoryCard.href = `/categories/${relatedSlug}.html`;
+                        categoryCard.className = 'block bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 hover:shadow-lg hover:-translate-y-1';
+
+                        categoryCard.innerHTML = `
+                            <div class="relative h-40 overflow-hidden">
+                                <img src="${relatedCategory.image || 'https://ext.same-assets.com/1001010126/placeholder-category.jpg'}" alt="${relatedCategory.name}" class="w-full h-full object-cover">
+                                <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-60"></div>
+                                <div class="absolute bottom-0 left-0 p-4">
+                                    <h3 class="text-xl font-bold text-white">${relatedCategory.name}</h3>
+                                </div>
+                            </div>
+                        `;
+
+                        container.appendChild(categoryCard);
+                    }
+                });
+            } else {
+                container.innerHTML = '<p class="text-gray-500">No related categories found.</p>';
+            }
+        }
+
+        function formatCategory(category) {
+            const categories = {
+                'massage-therapy': 'Massage Therapy',
+                'recovery-techniques': 'Recovery Techniques',
+                'product-guides': 'Product Guides',
+                'fitness': 'Fitness',
+                'injury-prevention': 'Injury Prevention'
+            };
+
+            return categories[category] || category.split('-').map(word =>
+                word.charAt(0).toUpperCase() + word.slice(1)
+            ).join(' ');
+        }
+
+        function formatDate(dateString) {
+            const date = new Date(dateString);
+            return date.toLocaleDateString('en-US', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+            });
+        }
+
+        function sortPosts(posts, sortOption) {
+            const sortedPosts = [...posts];
+
+            switch (sortOption) {
+                case 'date-desc':
+                    sortedPosts.sort((a, b) => new Date(b.date) - new Date(a.date));
+                    break;
+                case 'date-asc':
+                    sortedPosts.sort((a, b) => new Date(a.date) - new Date(b.date));
+                    break;
+                case 'title-asc':
+                    sortedPosts.sort((a, b) => a.title.localeCompare(b.title));
+                    break;
+                case 'title-desc':
+                    sortedPosts.sort((a, b) => b.title.localeCompare(a.title));
+                    break;
+            }
+
+            return sortedPosts;
+        }
+
+        function updatePostsDisplay() {
+            // Get current category data
+            const categorySlug = window.location.pathname.split('/').filter(segment => segment.length > 0).pop().replace('.html', '');
+            const categoryData = getCategoryData(categorySlug);
+
+            // Reload posts with current filters
+            loadCategoryPosts(categoryData);
+        }
+
+        function showError(message) {
+            // Hide the regular content sections
+            document.getElementById('category-hero').classList.add('hidden');
+            document.getElementById('category-tags').parentNode.classList.add('hidden');
+            document.getElementById('featured-post').classList.add('hidden');
+
+            // Show error message
+            document.getElementById('category-posts-container').innerHTML = `
+                <div class="col-span-full py-12 text-center">
+                    <div class="bg-red-50 text-red-800 p-4 rounded-md inline-block">
+                        <i class="fas fa-exclamation-circle mr-2"></i>
+                        ${message}
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>

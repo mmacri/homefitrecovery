@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Special Offer from Recovery Essentials</title>
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333333;
+      background-color: #f8f8f8;
+      line-height: 1.6;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+    }
+    .email-header {
+      padding: 20px;
+      text-align: center;
+      background-color: #4338ca;
+      color: white;
+    }
+    .email-header img {
+      max-width: 200px;
+      height: auto;
+    }
+    .hero-image {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .email-body {
+      padding: 30px 20px;
+    }
+    .email-footer {
+      padding: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #777777;
+      background-color: #f1f1f1;
+    }
+    h1 {
+      color: #4338ca;
+      margin-top: 0;
+      font-size: 26px;
+    }
+    h2 {
+      color: #4338ca;
+      font-size: 22px;
+    }
+    .button {
+      display: inline-block;
+      padding: 14px 30px;
+      background-color: #4338ca;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      margin: 20px 0;
+      font-size: 16px;
+      text-transform: uppercase;
+    }
+    .countdown {
+      background: #ffe3e3;
+      padding: 15px;
+      border-radius: 5px;
+      text-align: center;
+      margin: 20px 0;
+      font-weight: bold;
+      color: #e11d48;
+    }
+    .product-container {
+      margin: 30px 0;
+    }
+    .product {
+      margin-bottom: 30px;
+      border: 1px solid #e5e7eb;
+      border-radius: 5px;
+      padding: 15px;
+      background-color: #fafafa;
+    }
+    .product-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 5px;
+      margin-bottom: 15px;
+    }
+    .product-title {
+      font-weight: bold;
+      font-size: 18px;
+      color: #4338ca;
+      margin-bottom: 5px;
+    }
+    .product-price {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+    .product-oldprice {
+      text-decoration: line-through;
+      color: #777;
+    }
+    .product-newprice {
+      font-weight: bold;
+      color: #e11d48;
+    }
+    .promo-code {
+      background-color: #eef2ff;
+      padding: 15px;
+      text-align: center;
+      border-radius: 5px;
+      margin: 20px 0;
+    }
+    .promo-code-text {
+      font-size: 24px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #4338ca;
+    }
+    .divider {
+      height: 1px;
+      background-color: #e5e7eb;
+      margin: 25px 0;
+    }
+    .social-links {
+      margin-top: 20px;
+    }
+    .social-icon {
+      margin: 0 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="email-header">
+      <img src="https://same-assets.com/recovery-essentials-logo-white.png" alt="Recovery Essentials Logo">
+    </div>
+
+    <img src="https://same-assets.com/promotion-hero.jpg" alt="Flash Sale" class="hero-image">
+
+    <div class="email-body">
+      <h1>FLASH SALE: 24 HOURS ONLY!</h1>
+
+      <p>Hi {{firstName}},</p>
+
+      <p>For the next 24 hours only, enjoy up to <strong>40% OFF</strong> on our most popular recovery products. This sale is exclusively for our valued customers, so don't miss out!</p>
+
+      <div class="countdown">
+        HURRY! Sale ends: {{saleEndDate}} at {{saleEndTime}}
+      </div>
+
+      <div style="text-align: center;">
+        <a href="{{shopUrl}}" class="button">Shop The Sale</a>
+      </div>
+
+      <h2>Top Deals Just For You</h2>
+
+      <div class="product-container">
+        <div class="product">
+          <img src="https://same-assets.com/product-massage-gun.jpg" alt="Percussion Massage Gun" class="product-image">
+          <div class="product-title">Professional Percussion Massage Gun</div>
+          <div class="product-description">Targets deep muscle recovery with 5 intensity levels and 6 attachment heads</div>
+          <span class="product-price">
+            <span class="product-oldprice">${{originalPrice1}}</span>
+            <span class="product-newprice">${{salePrice1}}</span>
+          </span>
+          <a href="{{productUrl1}}" class="button" style="padding: 8px 20px; font-size: 14px; margin: 10px 0;">Add to Cart</a>
+        </div>
+
+        <div class="product">
+          <img src="https://same-assets.com/product-roller.jpg" alt="Vibrating Foam Roller" class="product-image">
+          <div class="product-title">Premium Vibrating Foam Roller</div>
+          <div class="product-description">3 vibration settings to enhance myofascial release and circulation</div>
+          <span class="product-price">
+            <span class="product-oldprice">${{originalPrice2}}</span>
+            <span class="product-newprice">${{salePrice2}}</span>
+          </span>
+          <a href="{{productUrl2}}" class="button" style="padding: 8px 20px; font-size: 14px; margin: 10px 0;">Add to Cart</a>
+        </div>
+
+        <div class="product">
+          <img src="https://same-assets.com/product-compression.jpg" alt="Compression Recovery Boots" class="product-image">
+          <div class="product-title">Compression Recovery Boots</div>
+          <div class="product-description">Air compression technology to reduce muscle soreness and improve circulation</div>
+          <span class="product-price">
+            <span class="product-oldprice">${{originalPrice3}}</span>
+            <span class="product-newprice">${{salePrice3}}</span>
+          </span>
+          <a href="{{productUrl3}}" class="button" style="padding: 8px 20px; font-size: 14px; margin: 10px 0;">Add to Cart</a>
+        </div>
+      </div>
+
+      <div class="promo-code">
+        <p>Use promo code at checkout:</p>
+        <span class="promo-code-text">{{promoCode}}</span>
+      </div>
+
+      <p style="text-align: center;">
+        <a href="{{viewAllDealsUrl}}" style="color: #4338ca; font-weight: bold;">View All Sale Items →</a>
+      </p>
+
+      <div class="divider"></div>
+
+      <p><strong>Why our customers love us:</strong></p>
+
+      <blockquote style="font-style: italic; border-left: 3px solid #4338ca; padding-left: 15px; margin-left: 0;">
+        "The percussion massage gun is a game-changer for my post-workout recovery. It's cut my recovery time in half!" - Michael S.
+      </blockquote>
+
+      <div class="social-links" style="text-align: center;">
+        <a href="#" class="social-icon"><img src="https://same-assets.com/icon-facebook.png" alt="Facebook" width="32"></a>
+        <a href="#" class="social-icon"><img src="https://same-assets.com/icon-instagram.png" alt="Instagram" width="32"></a>
+        <a href="#" class="social-icon"><img src="https://same-assets.com/icon-twitter.png" alt="Twitter" width="32"></a>
+        <a href="#" class="social-icon"><img src="https://same-assets.com/icon-youtube.png" alt="YouTube" width="32"></a>
+      </div>
+    </div>
+
+    <div class="email-footer">
+      <p>&copy; 2025 Recovery Essentials. All rights reserved.</p>
+      <p>This promotion is valid from {{saleStartDate}} to {{saleEndDate}}. Cannot be combined with other offers.</p>
+      <p>
+        <a href="{{preferencesUrl}}">Email Preferences</a> |
+        <a href="{{unsubscribeUrl}}">Unsubscribe</a> |
+        <a href="{{privacyUrl}}">Privacy Policy</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,7 +1,9 @@
 [build]
   publish = "."
+  command = ""
 
 [images]
   remote_images = [
-    "https://ext.same-assets.com/.*"
+    "https://ext.same-assets.com/**",
+    "https://same-assets.com/**"
   ]

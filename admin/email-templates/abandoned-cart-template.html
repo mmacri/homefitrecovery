@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Your Recovery Essentials Order</title>
+  <style>
+    /* Base styles */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      color: #333333;
+      background-color: #f8f8f8;
+      line-height: 1.6;
+    }
+    .email-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #ffffff;
+    }
+    .email-header {
+      padding: 20px;
+      text-align: center;
+      background-color: #0ea5e9;
+      color: white;
+    }
+    .email-header img {
+      max-width: 200px;
+      height: auto;
+    }
+    .email-body {
+      padding: 30px 20px;
+    }
+    .email-footer {
+      padding: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: #777777;
+      background-color: #f1f1f1;
+    }
+    h1 {
+      color: #0ea5e9;
+      margin-top: 0;
+    }
+    .button {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: #0ea5e9;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-weight: bold;
+      margin: 20px 0;
+    }
+    .discount-badge {
+      background-color: #fef2f2;
+      color: #ef4444;
+      font-weight: bold;
+      padding: 8px 15px;
+      border-radius: 20px;
+      display: inline-block;
+      margin: 10px 0;
+    }
+    .cart-items {
+      border: 1px solid #e5e7eb;
+      border-radius: 8px;
+      margin: 20px 0;
+      overflow: hidden;
+    }
+    .cart-header {
+      background-color: #f9fafb;
+      padding: 10px 15px;
+      border-bottom: 1px solid #e5e7eb;
+      color: #6b7280;
+      font-weight: bold;
+    }
+    .cart-item {
+      display: flex;
+      padding: 15px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .cart-item:last-child {
+      border-bottom: none;
+    }
+    .cart-item img {
+      width: 90px;
+      height: 90px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-right: 15px;
+    }
+    .cart-item-details {
+      flex: 1;
+    }
+    .cart-item-title {
+      font-weight: bold;
+      color: #111827;
+      margin-bottom: 4px;
+    }
+    .cart-item-variant {
+      color: #6b7280;
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+    .cart-item-price {
+      font-weight: bold;
+      color: #0ea5e9;
+    }
+    .cart-summary {
+      margin-top: 20px;
+      background-color: #f9fafb;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    .cart-summary-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .cart-total {
+      font-weight: bold;
+      font-size: 18px;
+      color: #111827;
+      border-top: 1px solid #e5e7eb;
+      padding-top: 10px;
+      margin-top: 10px;
+    }
+    .offer-box {
+      background-color: #ecfdf5;
+      padding: 20px;
+      border-radius: 8px;
+      margin: 25px 0;
+      text-align: center;
+    }
+    .offer-title {
+      font-size: 20px;
+      font-weight: bold;
+      color: #10b981;
+      margin-bottom: 10px;
+    }
+    .offer-code {
+      background-color: #10b981;
+      color: white;
+      padding: 8px 15px;
+      border-radius: 4px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      display: inline-block;
+      margin: 10px 0;
+    }
+    .timer-container {
+      margin: 20px 0;
+      text-align: center;
+    }
+    .timer {
+      display: inline-flex;
+      gap: 10px;
+    }
+    .timer-block {
+      background-color: #0ea5e9;
+      color: white;
+      font-weight: bold;
+      padding: 10px 0;
+      border-radius: 4px;
+      min-width: 60px;
+      text-align: center;
+    }
+    .timer-value {
+      font-size: 24px;
+      display: block;
+    }
+    .timer-label {
+      font-size: 12px;
+      display: block;
+      opacity: 0.8;
+    }
+    .divider {
+      height: 1px;
+      background-color: #e5e7eb;
+      margin: 25px 0;
+    }
+    .social-links {
+      margin-top: 20px;
+    }
+    .social-icon {
+      margin: 0 5px;
+    }
+    .related-products {
+      margin-top: 25px;
+    }
+    .related-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #111827;
+      margin-bottom: 15px;
+    }
+    .related-grid {
+      display: flex;
+      gap: 15px;
+    }
+    .related-product {
+      flex: 1;
+      border: 1px solid #e5e7eb;
+      border-radius: 4px;
+      padding: 10px;
+      text-align: center;
+    }
+    .related-product-image {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 10px;
+    }
+    .related-product-title {
+      font-size: 14px;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    .related-product-price {
+      color: #0ea5e9;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="email-container">
+    <div class="email-header">
+      <img src="https://same-assets.com/recovery-essentials-logo-white.png" alt="Recovery Essentials Logo">
+    </div>
+
+    <div class="email-body">
+      <h1>Forgot Something?</h1>
+
+      <p>Hi {{firstName}},</p>
+
+      <p>We noticed you left some items in your shopping cart. Your cart is still saved, and you can complete your order anytime.</p>
+
+      <div class="discount-badge">Save 10% if you complete your order today!</div>
+
+      <div style="text-align: center;">
+        <a href="{{cartUrl}}" class="button">Complete Your Order</a>
+      </div>
+
+      <div class="cart-items">
+        <div class="cart-header">
+          Your Cart ({{itemCount}} items)
+        </div>
+
+        {{#each cartItems}}
+        <div class="cart-item">
+          <img src="{{imageUrl}}" alt="{{title}}">
+          <div class="cart-item-details">
+            <div class="cart-item-title">{{title}}</div>
+            <div class="cart-item-variant">{{variant}}</div>
+            <div class="cart-item-price">${{price}}</div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+
+      <div class="cart-summary">
+        <div class="cart-summary-row">
+          <span>Subtotal</span>
+          <span>${{subtotal}}</span>
+        </div>
+        <div class="cart-summary-row">
+          <span>Shipping</span>
+          <span>${{shipping}}</span>
+        </div>
+        {{#if discount}}
+        <div class="cart-summary-row">
+          <span>Discount (10%)</span>
+          <span>-${{discount}}</span>
+        </div>
+        {{/if}}
+        <div class="cart-summary-row cart-total">
+          <span>Total</span>
+          <span>${{total}}</span>
+        </div>
+      </div>
+
+      <div class="offer-box">
+        <div class="offer-title">Limited-Time Offer</div>
+        <p>Complete your purchase now and get <strong>10% OFF</strong> your entire order!</p>
+        <div class="offer-code">{{promoCode}}</div>
+        <p><small>* Offer valid for 24 hours</small></p>
+      </div>
+
+      <div class="timer-container">
+        <p><strong>Offer expires in:</strong></p>
+        <div class="timer">
+          <div class="timer-block">
+            <span class="timer-value">{{hoursLeft}}</span>
+            <span class="timer-label">HOURS</span>
+          </div>
+          <div class="timer-block">
+            <span class="timer-value">{{minutesLeft}}</span>
+            <span class="timer-label">MINUTES</span>
+          </div>
+          <div class="timer-block">
+            <span class="timer-value">{{secondsLeft}}</span>
+            <span class="timer-label">SECONDS</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: center;">
+        <a href="{{cartUrl}}" class="button">Complete Your Order Now</a>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="related-products">
+        <div class="related-title">You Might Also Like</div>
+        <div class="related-grid">
+          <div class="related-product">
+            <img src="https://same-assets.com/related-product1.jpg" alt="Related Product 1" class="related-product-image">
+            <div class="related-product-title">Compression Leg Sleeves</div>
+            <div class="related-product-price">${{relatedPrice1}}</div>
+          </div>
+          <div class="related-product">
+            <img src="https://same-assets.com/related-product2.jpg" alt="Related Product 2" class="related-product-image">
+            <div class="related-product-title">Recovery Massage Ball Set</div>
+            <div class="related-product-price">${{relatedPrice2}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="divider"></div>
+
+      <p>If you're having trouble with your order or have any questions, our customer service team is here to help. Just reply to this email or contact us at <a href="mailto:support@recoveryessentials.com">support@recoveryessentials.com</a>.</p>
+
+      <div class="social-links" style="text-align: center;">
+        <a href="#" class="social-icon"><img src="https://same-assets.com/icon-facebook.png" alt="Facebook" width="32"></a>
+        <a href="#" class="social-icon"><img src="https://same-assets.com/icon-instagram.png" alt="Instagram" width="32"></a>
+        <a href="#" class="social-icon"><img src="https://same-assets.com/icon-twitter.png" alt="Twitter" width="32"></a>
+        <a href="#" class="social-icon"><img src="https://same-assets.com/icon-youtube.png" alt="YouTube" width="32"></a>
+      </div>
+    </div>
+
+    <div class="email-footer">
+      <p>&copy; 2025 Recovery Essentials. All rights reserved.</p>
+      <p>
+        <a href="{{preferencesUrl}}">Email Preferences</a> |
+        <a href="{{unsubscribeUrl}}">Unsubscribe</a> |
+        <a href="{{privacyUrl}}">Privacy Policy</a>
+      </p>
+    </div>
+  </div>
+</body>
+</html>

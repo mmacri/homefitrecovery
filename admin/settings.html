@@ -1,0 +1,143 @@
+<!-- Settings Section -->
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <h2 class="text-2xl font-bold mb-6">Settings</h2>
+
+    <!-- Amazon API Settings -->
+    <div class="mb-8">
+        <h3 class="text-lg font-semibold mb-4">Amazon API Settings</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+                <label for="amazon-associate-id" class="block text-sm font-medium text-gray-700 mb-1">Amazon Associate ID</label>
+                <input type="text" id="amazon-associate-id" name="amazon-associate-id" placeholder="recoveryessentials-20" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+            </div>
+            <div>
+                <label for="amazon-marketplace" class="block text-sm font-medium text-gray-700 mb-1">Amazon Marketplace</label>
+                <select id="amazon-marketplace" name="amazon-marketplace" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                    <option value="www.amazon.com">Amazon.com (US)</option>
+                    <option value="www.amazon.co.uk">Amazon.co.uk (UK)</option>
+                    <option value="www.amazon.ca">Amazon.ca (Canada)</option>
+                    <option value="www.amazon.de">Amazon.de (Germany)</option>
+                </select>
+            </div>
+            <div>
+                <label for="amazon-access-key" class="block text-sm font-medium text-gray-700 mb-1">API Access Key</label>
+                <input type="text" id="amazon-access-key" name="amazon-access-key" placeholder="Your Amazon API Access Key" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+            </div>
+            <div>
+                <label for="amazon-secret-key" class="block text-sm font-medium text-gray-700 mb-1">API Secret Key</label>
+                <input type="password" id="amazon-secret-key" name="amazon-secret-key" placeholder="Your Amazon API Secret Key" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+            </div>
+        </div>
+        <div class="mt-4">
+            <button type="button" id="save-amazon-settings" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md">
+                Save API Settings
+            </button>
+        </div>
+    </div>
+
+    <!-- Site Settings -->
+    <div class="mb-8">
+        <h3 class="text-lg font-semibold mb-4">Site Settings</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+                <label for="site-name" class="block text-sm font-medium text-gray-700 mb-1">Site Name</label>
+                <input type="text" id="site-name" name="site-name" value="Recovery Essentials" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+            </div>
+            <div>
+                <label for="site-tagline" class="block text-sm font-medium text-gray-700 mb-1">Tagline</label>
+                <input type="text" id="site-tagline" name="site-tagline" value="Best Recovery Products & Reviews" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <label for="site-description" class="block text-sm font-medium text-gray-700 mb-1">Site Description</label>
+            <textarea id="site-description" name="site-description" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent">Your trusted source for honest, in-depth reviews of the best fitness recovery products, including massage guns, foam rollers, compression gear, and more.</textarea>
+        </div>
+
+        <div class="mb-6">
+            <label for="site-logo" class="block text-sm font-medium text-gray-700 mb-1">Site Logo URL</label>
+            <input type="url" id="site-logo" name="site-logo" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+        </div>
+
+        <div class="mb-6">
+            <label class="block text-sm font-medium text-gray-700 mb-2">Color Scheme</label>
+            <div class="flex space-x-4">
+                <div>
+                    <label for="primary-color" class="block text-xs text-gray-500 mb-1">Primary</label>
+                    <input type="color" id="primary-color" name="primary-color" value="#4F46E5" class="h-10 w-10 border-0 p-0">
+                </div>
+                <div>
+                    <label for="secondary-color" class="block text-xs text-gray-500 mb-1">Secondary</label>
+                    <input type="color" id="secondary-color" name="secondary-color" value="#7C3AED" class="h-10 w-10 border-0 p-0">
+                </div>
+                <div>
+                    <label for="accent-color" class="block text-xs text-gray-500 mb-1">Accent</label>
+                    <input type="color" id="accent-color" name="accent-color" value="#10B981" class="h-10 w-10 border-0 p-0">
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <button type="button" id="save-site-settings" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md">
+                Save Site Settings
+            </button>
+        </div>
+    </div>
+
+    <!-- Data Management -->
+    <div class="mb-8">
+        <h3 class="text-lg font-semibold mb-4">Data Management</h3>
+        <div class="space-y-4 p-6 bg-gray-50 rounded-lg border border-gray-200">
+            <button type="button" id="export-data" onclick="exportData()" class="flex items-center text-indigo-600 hover:text-indigo-800 font-medium">
+                <i class="fas fa-download mr-2"></i> Export Database
+            </button>
+            <p class="text-sm text-gray-500">Export all product and blog data to a JSON file for backup purposes.</p>
+
+            <div class="border-t border-gray-200 my-4"></div>
+
+            <button type="button" id="import-data" onclick="importData()" class="flex items-center text-indigo-600 hover:text-indigo-800 font-medium">
+                <i class="fas fa-upload mr-2"></i> Import Database
+            </button>
+            <p class="text-sm text-gray-500">Import data from a previously exported JSON file.</p>
+
+            <div class="border-t border-gray-200 my-4"></div>
+
+            <button type="button" id="clear-data" onclick="clearData()" class="flex items-center text-red-600 hover:text-red-800 font-medium">
+                <i class="fas fa-trash-alt mr-2"></i> Clear All Data
+            </button>
+            <p class="text-sm text-gray-500">Remove all products, blog posts, and affiliate link data. This action cannot be undone.</p>
+        </div>
+    </div>
+
+    <!-- Admin Account -->
+    <div>
+        <h3 class="text-lg font-semibold mb-4">Admin Account</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+                <label for="admin-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <input type="email" id="admin-email" name="admin-email" value="admin@recoveryessentials.com" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+            </div>
+            <div>
+                <label for="admin-name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                <input type="text" id="admin-name" name="admin-name" value="Admin" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+                <label for="admin-password" class="block text-sm font-medium text-gray-700 mb-1">New Password</label>
+                <input type="password" id="admin-password" name="admin-password" placeholder="Enter new password" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+            </div>
+            <div>
+                <label for="admin-password-confirm" class="block text-sm font-medium text-gray-700 mb-1">Confirm Password</label>
+                <input type="password" id="admin-password-confirm" name="admin-password-confirm" placeholder="Confirm new password" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <button type="button" id="save-account-settings" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md">
+                Update Account
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>[Product Name] - Recovery Essentials</title>
+    <meta name="description" content="[Product Description]">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <!-- Product Schema.org Structured Data will be injected here -->
+    <script type="application/ld+json" id="product-schema"></script>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header will be included here -->
+    <div id="header-placeholder"></div>
+
+    <!-- Breadcrumb Navigation -->
+    <div class="bg-gray-100 py-2">
+        <div class="container mx-auto px-4">
+            <nav class="text-sm" aria-label="Breadcrumb">
+                <ol class="list-none p-0 inline-flex">
+                    <li class="flex items-center">
+                        <a href="/" class="text-gray-600 hover:text-indigo-600">Home</a>
+                        <svg class="fill-current w-3 h-3 mx-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg>
+                    </li>
+                    <li class="flex items-center">
+                        <a href="/categories/[category-slug].html" class="text-gray-600 hover:text-indigo-600" id="category-breadcrumb">[Category Name]</a>
+                        <svg class="fill-current w-3 h-3 mx-2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><path d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"/></svg>
+                    </li>
+                    <li class="text-indigo-600" id="product-breadcrumb">[Product Name]</li>
+                </ol>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Product Detail Section -->
+    <section class="py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row -mx-4">
+                <!-- Product Images -->
+                <div class="md:w-2/5 px-4 mb-6 md:mb-0">
+                    <div class="sticky top-24">
+                        <div class="bg-white border border-gray-200 rounded-lg overflow-hidden mb-4">
+                            <div id="main-product-image" class="h-80 flex items-center justify-center p-4">
+                                <img src="" alt="" class="max-h-full max-w-full object-contain" id="product-main-img">
+                            </div>
+                        </div>
+                        <div id="product-thumbnails" class="grid grid-cols-4 gap-2">
+                            <!-- Thumbnails will be dynamically generated -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product Info -->
+                <div class="md:w-3/5 px-4">
+                    <h1 id="product-name" class="text-3xl font-bold text-gray-900 mb-2"></h1>
+                    <div class="flex items-center mb-4">
+                        <div id="product-rating" class="flex text-yellow-400 mr-2">
+                            <!-- Star rating will be dynamically generated -->
+                        </div>
+                        <span id="review-count" class="text-gray-600 text-sm"></span>
+                    </div>
+
+                    <div class="mb-6">
+                        <span id="product-price" class="text-3xl font-bold text-indigo-600"></span>
+                        <span id="product-original-price" class="text-gray-500 text-lg line-through ml-2"></span>
+                    </div>
+
+                    <div class="mb-6" id="product-availability">
+                        <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                            <svg class="mr-1 h-2 w-2 text-green-500" fill="currentColor" viewBox="0 0 8 8">
+                                <circle cx="4" cy="4" r="3"></circle>
+                            </svg>
+                            In Stock
+                        </span>
+                    </div>
+
+                    <div class="mb-6">
+                        <p id="product-short-description" class="text-gray-700"></p>
+                    </div>
+
+                    <!-- Affiliate Buttons -->
+                    <div class="flex flex-wrap gap-3 mb-8">
+                        <a id="amazon-button" href="#" target="_blank" rel="nofollow noopener" class="flex-1 bg-amber-500 hover:bg-amber-600 text-white font-bold py-3 px-6 rounded-md text-center flex items-center justify-center">
+                            <i class="fab fa-amazon mr-2"></i> View on Amazon
+                        </a>
+                        <a id="alternative-button" href="#" target="_blank" rel="nofollow noopener" class="flex-1 bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-md text-center flex items-center justify-center">
+                            <i class="fas fa-shopping-cart mr-2"></i> Check Best Price
+                        </a>
+                    </div>
+
+                    <!-- Key Features -->
+                    <div class="mb-8">
+                        <h2 class="text-xl font-bold text-gray-900 mb-4">Key Features</h2>
+                        <ul id="product-features" class="list-disc pl-5 text-gray-700 space-y-2">
+                            <!-- Features will be dynamically generated -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Description -->
+            <div class="mt-12">
+                <div class="border-b border-gray-300 mb-6">
+                    <ul class="flex flex-wrap -mb-px">
+                        <li class="mr-2">
+                            <a href="#description" class="inline-block p-4 text-indigo-600 border-b-2 border-indigo-600 rounded-t-lg active" aria-current="page">Description</a>
+                        </li>
+                        <li class="mr-2">
+                            <a href="#specifications" class="inline-block p-4 text-gray-500 hover:text-gray-600 border-b-2 border-transparent rounded-t-lg">Specifications</a>
+                        </li>
+                        <li class="mr-2">
+                            <a href="#reviews" class="inline-block p-4 text-gray-500 hover:text-gray-600 border-b-2 border-transparent rounded-t-lg">Reviews</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Description Tab -->
+                <div id="description" class="tab-content">
+                    <div class="prose max-w-none text-gray-700" id="product-full-description">
+                        <!-- Full description will be dynamically inserted -->
+                    </div>
+                </div>
+
+                <!-- Specifications Tab -->
+                <div id="specifications" class="tab-content hidden">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <tbody id="product-specifications" class="divide-y divide-gray-200">
+                            <!-- Specifications will be dynamically generated -->
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Reviews Tab -->
+                <div id="reviews" class="tab-content hidden">
+                    <div id="product-reviews">
+                        <!-- Reviews will be dynamically generated -->
+                        <div class="text-center py-8">
+                            <p class="text-gray-600 mb-4">Be the first to review this product</p>
+                            <button id="write-review-button" class="bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-2 px-4 rounded-md">
+                                Write a Review
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Related Products -->
+            <div class="mt-16">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Related Products</h2>
+                <div id="related-products" class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                    <!-- Related products will be dynamically generated -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer will be included here -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Product detail JavaScript -->
+    <script src="/js/common.js"></script>
+    <script src="/js/product-detail.js"></script>
+</body>
+</html>

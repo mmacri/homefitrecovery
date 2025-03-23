@@ -1,0 +1,398 @@
+<!-- SEO Management Dashboard -->
+<div class="space-y-8">
+    <!-- Page Header -->
+    <div class="flex justify-between items-center">
+        <h1 class="text-2xl font-bold text-gray-900">SEO Management</h1>
+        <div class="flex space-x-3">
+            <button id="run-site-analysis-btn" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700 focus:outline-none">
+                <i class="fas fa-sync-alt mr-2"></i> Run Site Analysis
+            </button>
+            <button id="seo-settings-btn" class="bg-white border border-gray-300 text-gray-700 px-4 py-2 rounded hover:bg-gray-50 focus:outline-none">
+                <i class="fas fa-cog mr-2"></i> Settings
+            </button>
+        </div>
+    </div>
+
+    <!-- Notification Area -->
+    <div id="notification" class="hidden mb-4 p-3 rounded"></div>
+
+    <!-- Site SEO Score -->
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+        <div class="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
+            <div>
+                <h2 class="text-xl font-bold text-gray-900 mb-2">Site SEO Score</h2>
+                <p class="text-gray-600 max-w-2xl">Overall SEO performance score based on content analysis, keyword optimization, and technical factors.</p>
+            </div>
+            <div class="seo-score-circle" id="site-seo-score">
+                <div class="relative w-32 h-32">
+                    <svg class="w-full h-full" viewBox="0 0 36 36">
+                        <path class="score-circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#eaeaea" stroke-width="3" />
+                        <path id="score-circle" class="score-circle" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="#4ade80" stroke-width="3" stroke-dasharray="75, 100" />
+                        <text x="18" y="20.35" class="score-text text-4xl" text-anchor="middle">75</text>
+                    </svg>
+                    <div class="absolute bottom-0 w-full text-center text-sm font-medium text-gray-500">SEO Score</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-6 border-t pt-6 border-gray-100">
+            <h3 class="text-md font-medium text-gray-900 mb-3">Site Recommendations</h3>
+            <div id="site-recommendations" class="space-y-4">
+                <!-- Recommendations will be populated here -->
+                <div class="animate-pulse space-y-2">
+                    <div class="h-4 bg-gray-200 rounded w-3/4"></div>
+                    <div class="h-4 bg-gray-200 rounded w-2/3"></div>
+                    <div class="h-4 bg-gray-200 rounded w-1/2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tab Navigation -->
+    <div class="border-b border-gray-200">
+        <ul class="flex flex-wrap -mb-px" role="tablist">
+            <li class="mr-2">
+                <button id="content-tab" class="inline-block py-4 px-4 text-sm font-medium text-center text-indigo-600 rounded-t-lg border-b-2 border-indigo-600 active" role="tab" aria-controls="content">
+                    Content Analysis
+                </button>
+            </li>
+            <li class="mr-2">
+                <button id="keywords-tab" class="inline-block py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300" role="tab" aria-controls="keywords">
+                    Keyword Analysis
+                </button>
+            </li>
+            <li class="mr-2">
+                <button id="technical-tab" class="inline-block py-4 px-4 text-sm font-medium text-center text-gray-500 rounded-t-lg border-b-2 border-transparent hover:text-gray-600 hover:border-gray-300" role="tab" aria-controls="technical">
+                    Technical SEO
+                </button>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="tab-content">
+        <!-- Content Analysis Tab -->
+        <div id="content-tab-content" class="tab-pane active">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-lg font-bold text-gray-900">Content SEO Analysis</h2>
+                    <div class="flex items-center">
+                        <div class="mr-4">
+                            <select id="content-filter" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                <option value="all">All Content</option>
+                                <option value="blog">Blog Posts</option>
+                                <option value="product">Products</option>
+                                <option value="page">Pages</option>
+                            </select>
+                        </div>
+                        <div>
+                            <select id="score-filter" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50">
+                                <option value="all">All Scores</option>
+                                <option value="low">Low Scores (0-59)</option>
+                                <option value="medium">Medium Scores (60-79)</option>
+                                <option value="high">High Scores (80-100)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Content</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Focus Keyword</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">SEO Score</th>
+                                <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Last Analyzed</th>
+                                <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="content-analysis-table" class="bg-white divide-y divide-gray-200">
+                            <!-- Content analysis rows will be populated here -->
+                            <tr>
+                                <td colspan="6" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+                                    Loading content analysis...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Keyword Analysis Tab -->
+        <div id="keywords-tab-content" class="tab-pane hidden">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-lg font-bold text-gray-900">Keyword Performance</h2>
+                    <div class="flex items-center">
+                        <div class="relative w-64">
+                            <input type="text" id="keyword-search" placeholder="Search keywords..." class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 pl-10">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <i class="fas fa-search text-gray-400"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Keyword Performance Chart -->
+                    <div class="bg-gray-50 rounded-lg p-4">
+                        <h3 class="text-md font-medium text-gray-900 mb-3">Top Keywords</h3>
+                        <div class="h-64" id="keyword-chart-container">
+                            <canvas id="keyword-chart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Keyword Stats -->
+                    <div>
+                        <h3 class="text-md font-medium text-gray-900 mb-3">Keyword Statistics</h3>
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-gray-600">Total Tracked Keywords</span>
+                                    <span class="text-lg font-semibold" id="total-keywords">-</span>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-gray-600">Average Keyword Score</span>
+                                    <span class="text-lg font-semibold" id="avg-keyword-score">-</span>
+                                </div>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm text-gray-600">Potential Cannibalization</span>
+                                    <span class="text-lg font-semibold" id="keyword-cannibalization">-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <h3 class="text-md font-medium text-gray-900 mb-3">Keyword Details</h3>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full divide-y divide-gray-200">
+                            <thead class="bg-gray-50">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Keyword</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Used In</th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Avg. Score</th>
+                                    <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="keyword-table" class="bg-white divide-y divide-gray-200">
+                                <!-- Keyword rows will be populated here -->
+                                <tr>
+                                    <td colspan="4" class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-center">
+                                        Loading keyword data...
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technical SEO Tab -->
+        <div id="technical-tab-content" class="tab-pane hidden">
+            <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+                <h2 class="text-lg font-bold text-gray-900 mb-6">Technical SEO</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Technical SEO Checklist -->
+                    <div>
+                        <h3 class="text-md font-medium text-gray-900 mb-3">Site Health Check</h3>
+                        <div class="space-y-4" id="technical-checklist">
+                            <!-- Checklist items will be populated here -->
+                            <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+                                <div class="mr-3 text-green-500"><i class="fas fa-check-circle"></i></div>
+                                <div class="flex-1">
+                                    <h4 class="text-sm font-medium">XML Sitemap</h4>
+                                    <p class="text-xs text-gray-500">Sitemap is properly configured</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+                                <div class="mr-3 text-yellow-500"><i class="fas fa-exclamation-circle"></i></div>
+                                <div class="flex-1">
+                                    <h4 class="text-sm font-medium">SSL Certificate</h4>
+                                    <p class="text-xs text-gray-500">Certificate is valid but expiring soon</p>
+                                </div>
+                            </div>
+                            <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+                                <div class="mr-3 text-red-500"><i class="fas fa-times-circle"></i></div>
+                                <div class="flex-1">
+                                    <h4 class="text-sm font-medium">Mobile Friendliness</h4>
+                                    <p class="text-xs text-gray-500">Issues detected on mobile devices</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SEO Tools -->
+                    <div>
+                        <h3 class="text-md font-medium text-gray-900 mb-3">SEO Tools</h3>
+                        <div class="space-y-4">
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <h4 class="text-sm font-medium mb-2">Generate XML Sitemap</h4>
+                                <p class="text-xs text-gray-500 mb-3">Create or update your site's XML sitemap for search engines.</p>
+                                <button id="generate-sitemap-btn" class="px-3 py-1.5 bg-indigo-600 text-white text-xs rounded hover:bg-indigo-700">
+                                    Generate Sitemap
+                                </button>
+                            </div>
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <h4 class="text-sm font-medium mb-2">Bulk Meta Description Generator</h4>
+                                <p class="text-xs text-gray-500 mb-3">Generate meta descriptions for multiple pages based on content.</p>
+                                <button id="meta-generator-btn" class="px-3 py-1.5 bg-indigo-600 text-white text-xs rounded hover:bg-indigo-700">
+                                    Open Generator
+                                </button>
+                            </div>
+                            <div class="p-4 bg-gray-50 rounded-lg">
+                                <h4 class="text-sm font-medium mb-2">Schema Markup Generator</h4>
+                                <p class="text-xs text-gray-500 mb-3">Create schema.org markup for rich snippets in search results.</p>
+                                <button id="schema-generator-btn" class="px-3 py-1.5 bg-indigo-600 text-white text-xs rounded hover:bg-indigo-700">
+                                    Open Generator
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mt-6">
+                    <h3 class="text-md font-medium text-gray-900 mb-3">Technical Recommendations</h3>
+                    <div class="space-y-4" id="technical-recommendations">
+                        <!-- Technical recommendations will be populated here -->
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <h4 class="text-sm font-medium mb-1">Optimize Page Speed</h4>
+                            <p class="text-xs text-gray-600">Several pages have slow loading times. Consider optimizing images and minimizing CSS/JS.</p>
+                        </div>
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <h4 class="text-sm font-medium mb-1">Fix Broken Links</h4>
+                            <p class="text-xs text-gray-600">3 broken internal links were detected. Check and update these links.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Content Analysis Modal -->
+<div id="content-analysis-modal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-lg shadow-xl w-full max-w-4xl max-h-screen overflow-hidden">
+        <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+            <h3 class="text-lg font-medium text-gray-900" id="analysis-modal-title">Content SEO Analysis</h3>
+            <button type="button" id="close-analysis-modal-btn" class="text-gray-400 hover:text-gray-500">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="px-6 py-4 max-h-[calc(100vh-200px)] overflow-y-auto" id="analysis-modal-content">
+            <!-- Analysis content will be populated here -->
+        </div>
+        <div class="px-6 py-3 bg-gray-50 flex justify-end">
+            <button type="button" id="close-analysis-btn" class="inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50">
+                Close
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- SEO Settings Modal -->
+<div id="seo-settings-modal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center z-50 hidden">
+    <div class="bg-white rounded-lg shadow-xl w-full max-w-2xl max-h-screen overflow-hidden">
+        <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+            <h3 class="text-lg font-medium text-gray-900">SEO Settings</h3>
+            <button type="button" id="close-settings-modal-btn" class="text-gray-400 hover:text-gray-500">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="px-6 py-4 max-h-[calc(100vh-200px)] overflow-y-auto">
+            <form id="seo-settings-form">
+                <!-- Content Analysis Settings -->
+                <div class="mb-6">
+                    <h4 class="text-md font-medium text-gray-900 mb-3">Content Analysis Settings</h4>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="min-content-length" class="block text-sm font-medium text-gray-700 mb-1">Minimum Content Length</label>
+                            <input type="number" id="min-content-length" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" min="100" max="1000">
+                            <p class="mt-1 text-xs text-gray-500">Minimum recommended length for content (characters)</p>
+                        </div>
+                        <div>
+                            <label for="optimal-content-length" class="block text-sm font-medium text-gray-700 mb-1">Optimal Content Length</label>
+                            <input type="number" id="optimal-content-length" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" min="500" max="5000">
+                            <p class="mt-1 text-xs text-gray-500">Optimal length for content (characters)</p>
+                        </div>
+                        <div>
+                            <label for="keyword-density-min" class="block text-sm font-medium text-gray-700 mb-1">Minimum Keyword Density (%)</label>
+                            <input type="number" id="keyword-density-min" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" min="0.1" max="5" step="0.1">
+                        </div>
+                        <div>
+                            <label for="keyword-density-max" class="block text-sm font-medium text-gray-700 mb-1">Maximum Keyword Density (%)</label>
+                            <input type="number" id="keyword-density-max" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" min="0.5" max="10" step="0.1">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- On-Page SEO Settings -->
+                <div class="mb-6">
+                    <h4 class="text-md font-medium text-gray-900 mb-3">On-Page SEO Checks</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="check-headings" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                            <label for="check-headings" class="ml-2 block text-sm text-gray-700">Check Heading Hierarchy</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="check-images" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                            <label for="check-images" class="ml-2 block text-sm text-gray-700">Check Image Alt Text</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="check-links" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                            <label for="check-links" class="ml-2 block text-sm text-gray-700">Check Internal/External Links</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="check-readability" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                            <label for="check-readability" class="ml-2 block text-sm text-gray-700">Check Content Readability</label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Technical SEO Settings -->
+                <div>
+                    <h4 class="text-md font-medium text-gray-900 mb-3">Technical SEO Settings</h4>
+                    <div class="space-y-3">
+                        <div class="flex items-center">
+                            <input type="checkbox" id="generate-sitemap" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                            <label for="generate-sitemap" class="ml-2 block text-sm text-gray-700">Auto-Generate XML Sitemap</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="canonical-urls" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                            <label for="canonical-urls" class="ml-2 block text-sm text-gray-700">Use Canonical URLs</label>
+                        </div>
+                        <div class="flex items-center">
+                            <input type="checkbox" id="schema-markup" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded">
+                            <label for="schema-markup" class="ml-2 block text-sm text-gray-700">Use Schema.org Markup</label>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="px-6 py-3 bg-gray-50 flex justify-end">
+            <button type="button" id="cancel-settings-btn" class="inline-flex justify-center py-2 px-4 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 mr-3">
+                Cancel
+            </button>
+            <button type="button" id="save-settings-btn" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+                Save Settings
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- SEO Manager Script -->
+<script src="js/seo-manager.js"></script>
+<!-- Chart.js for data visualization -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+<!-- SEO Dashboard Script -->
+<script src="js/seo-dashboard.js"></script>

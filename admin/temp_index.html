@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Dashboard - Recovery Essentials</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .hero-bg {
+            background: linear-gradient(135deg, #4F46E5 0%, #7C3AED 100%);
+        }
+        .notification {
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.25rem;
+            color: white;
+            z-index: 50;
+            opacity: 1;
+            transition: opacity 0.5s;
+        }
+        .notification.success {
+            background-color: rgba(16, 185, 129, 1); /* Green */
+        }
+        .notification.error {
+            background-color: rgba(239, 68, 68, 1); /* Red */
+        }
+        .notification.info {
+            background-color: rgba(59, 130, 246, 1); /* Blue */
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50">
+    <!-- Header -->
+    <header class="bg-indigo-800 shadow-sm py-4">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center">
+                    <a href="../index.html" class="flex items-center">
+                        <div class="w-10 h-10 bg-white flex items-center justify-center rounded">
+                            <span class="text-indigo-800 font-bold">RE</span>
+                        </div>
+                        <div class="ml-2">
+                            <div class="font-bold text-white">Recovery Essentials</div>
+                            <div class="text-xs text-indigo-200">Admin Dashboard</div>
+                        </div>
+                    </a>
+                </div>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="#" class="text-white hover:text-indigo-200 nav-link" data-target="dashboard-section">Dashboard</a>
+                    <a href="#" class="text-white hover:text-indigo-200 nav-link" data-target="products-section">Products</a>
+                    <a href="#" class="text-white hover:text-indigo-200 nav-link" data-target="blog-section">Blog Posts</a>
+                    <a href="#" class="text-white hover:text-indigo-200 nav-link" data-target="affiliate-section">Affiliate Links</a>
+                    <a href="#" class="text-white hover:text-indigo-200 nav-link" data-target="settings-section">Settings</a>
+                    <a href="../index.html" class="text-white hover:text-indigo-200">
+                        <i class="fas fa-external-link-alt mr-1"></i> View Site
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Dashboard Hero -->
+    <section class="hero-bg text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="max-w-6xl mx-auto">
+                <h1 class="text-3xl font-bold mb-4">Admin Dashboard</h1>
+                <p class="text-lg mb-0">
+                    Manage your products, blog posts, and affiliate links
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admin Content -->
+    <section class="py-8 bg-white">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Sidebar -->
+                <div class="lg:w-1/4">
+                    <div class="bg-gray-50 rounded-lg shadow-sm border border-gray-200 p-4">
+                        <h3 class="font-bold text-lg mb-4 text-indigo-800">Navigation</h3>
+                        <ul class="space-y-2">
+                            <li>
+                                <a href="#" class="flex items-center text-indigo-600 font-medium py-2 px-3 bg-indigo-50 rounded-md nav-link" data-target="dashboard-section">
+                                    <i class="fas fa-tachometer-alt w-6"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center text-gray-700 hover:text-indigo-600 py-2 px-3 hover:bg-indigo-50 rounded-md nav-link" data-target="products-section">
+                                    <i class="fas fa-box w-6"></i>
+                                    <span>Products</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center text-gray-700 hover:text-indigo-600 py-2 px-3 hover:bg-indigo-50 rounded-md nav-link" data-target="blog-section">
+                                    <i class="fas fa-pen w-6"></i>
+                                    <span>Blog Posts</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center text-gray-700 hover:text-indigo-600 py-2 px-3 hover:bg-indigo-50 rounded-md nav-link" data-target="affiliate-section">
+                                    <i class="fas fa-link w-6"></i>
+                                    <span>Affiliate Links</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="flex items-center text-gray-700 hover:text-indigo-600 py-2 px-3 hover:bg-indigo-50 rounded-md nav-link" data-target="settings-section">
+                                    <i class="fas fa-cog w-6"></i>
+                                    <span>Settings</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Main Content -->
+                <div class="lg:w-3/4" id="main-content">
+                    <!-- Content sections will be loaded here -->
+                    <p>Loading content...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Load Scripts -->
+    <script src="js/admin.js"></script>
+    <script src="js/blog-admin.js"></script>
+</body>
+</html>

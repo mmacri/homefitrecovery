@@ -1,0 +1,537 @@
+/**
+ * Recovery Essentials - Email Marketing Theme
+ * Custom theme and branding for the Email Marketing System
+ */
+
+:root {
+  /* Brand Colors */
+  --color-primary: #4338ca;       /* Indigo 700 - Primary brand color */
+  --color-primary-light: #6366f1; /* Indigo 500 - Lighter variant */
+  --color-primary-dark: #312e81;  /* Indigo 900 - Darker variant */
+
+  --color-secondary: #0ea5e9;     /* Sky 500 - Secondary brand color */
+  --color-secondary-light: #38bdf8; /* Sky 400 - Lighter variant */
+  --color-secondary-dark: #0369a1; /* Sky 700 - Darker variant */
+
+  --color-accent: #10b981;        /* Emerald 500 - Accent color */
+  --color-accent-light: #34d399;  /* Emerald 400 - Lighter variant */
+  --color-accent-dark: #047857;   /* Emerald 700 - Darker variant */
+
+  /* Neutral Colors */
+  --color-gray-50: #f9fafb;
+  --color-gray-100: #f3f4f6;
+  --color-gray-200: #e5e7eb;
+  --color-gray-300: #d1d5db;
+  --color-gray-400: #9ca3af;
+  --color-gray-500: #6b7280;
+  --color-gray-600: #4b5563;
+  --color-gray-700: #374151;
+  --color-gray-800: #1f2937;
+  --color-gray-900: #111827;
+
+  /* Semantic Colors */
+  --color-success: #10b981;       /* Emerald 500 - Success */
+  --color-warning: #f59e0b;       /* Amber 500 - Warning */
+  --color-error: #ef4444;         /* Red 500 - Error */
+  --color-info: #3b82f6;          /* Blue 500 - Info */
+
+  /* UI Element Colors */
+  --color-background: #ffffff;
+  --color-surface: #ffffff;
+  --color-text: var(--color-gray-900);
+  --color-text-secondary: var(--color-gray-600);
+  --color-border: var(--color-gray-200);
+
+  /* Font Settings */
+  --font-family-base: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-family-heading: var(--font-family-base);
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-bold: 700;
+
+  /* Spacing */
+  --spacing-xs: 0.25rem;  /* 4px */
+  --spacing-sm: 0.5rem;   /* 8px */
+  --spacing-md: 1rem;     /* 16px */
+  --spacing-lg: 1.5rem;   /* 24px */
+  --spacing-xl: 2rem;     /* 32px */
+  --spacing-2xl: 3rem;    /* 48px */
+
+  /* Border Radius */
+  --radius-sm: 0.25rem;   /* 4px */
+  --radius-md: 0.5rem;    /* 8px */
+  --radius-lg: 0.75rem;   /* 12px */
+  --radius-full: 9999px;  /* Rounded full */
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+
+  /* Transition Speeds */
+  --transition-fast: 150ms;
+  --transition-normal: 250ms;
+  --transition-slow: 350ms;
+}
+
+/* Base Styles Override */
+body {
+  font-family: var(--font-family-base);
+  color: var(--color-text);
+  background-color: var(--color-gray-50);
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-gray-900);
+}
+
+/* Button Styles */
+.btn-primary {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-dark);
+  border-color: var(--color-primary-dark);
+}
+
+.btn-secondary {
+  background-color: var(--color-secondary);
+  border-color: var(--color-secondary);
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-secondary-dark);
+  border-color: var(--color-secondary-dark);
+}
+
+.btn-accent {
+  background-color: var(--color-accent);
+  border-color: var(--color-accent);
+  color: white;
+}
+
+.btn-accent:hover {
+  background-color: var(--color-accent-dark);
+  border-color: var(--color-accent-dark);
+}
+
+.btn-outline-primary {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  background-color: transparent;
+}
+
+.btn-outline-primary:hover {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+/* Form Controls */
+.form-control:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 0.2rem rgba(67, 56, 202, 0.25);
+}
+
+/* Email Marketing Specific Styles */
+
+/* Dashboard Cards */
+.email-stat-card {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+  padding: var(--spacing-lg);
+  transition: box-shadow var(--transition-normal);
+}
+
+.email-stat-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.email-stat-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.email-stat-icon.primary {
+  background-color: rgba(67, 56, 202, 0.1);
+  color: var(--color-primary);
+}
+
+.email-stat-icon.secondary {
+  background-color: rgba(14, 165, 233, 0.1);
+  color: var(--color-secondary);
+}
+
+.email-stat-icon.accent {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--color-accent);
+}
+
+.email-stat-icon.warning {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--color-warning);
+}
+
+/* Tab Navigation */
+.email-tabs .nav-link {
+  color: var(--color-text-secondary);
+  border-bottom: 2px solid transparent;
+  padding: var(--spacing-md) var(--spacing-sm);
+  margin-right: var(--spacing-md);
+  transition: all var(--transition-fast);
+}
+
+.email-tabs .nav-link:hover {
+  color: var(--color-primary);
+}
+
+.email-tabs .nav-link.active {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+/* Campaign Tables */
+.campaign-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.campaign-table th {
+  background-color: var(--color-gray-50);
+  color: var(--color-gray-600);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  padding: var(--spacing-md);
+  text-align: left;
+}
+
+.campaign-table td {
+  padding: var(--spacing-md);
+  border-top: 1px solid var(--color-border);
+}
+
+.campaign-table tr:hover {
+  background-color: var(--color-gray-50);
+}
+
+/* Status Badges */
+.status-badge {
+  display: inline-block;
+  padding: 0.25em 0.75em;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-medium);
+}
+
+.status-badge.draft {
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-600);
+}
+
+.status-badge.scheduled {
+  background-color: rgba(14, 165, 233, 0.1);
+  color: var(--color-secondary);
+}
+
+.status-badge.active {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--color-accent);
+}
+
+.status-badge.completed {
+  background-color: rgba(67, 56, 202, 0.1);
+  color: var(--color-primary);
+}
+
+.status-badge.paused {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: var(--color-warning);
+}
+
+.status-badge.error {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: var(--color-error);
+}
+
+/* Dashboard Chart Styling */
+.chart-container {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  padding: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.chart-title {
+  font-size: 1rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-gray-900);
+  margin: 0;
+}
+
+/* Email Template Grid */
+.template-grid-item {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--transition-normal);
+}
+
+.template-grid-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--color-primary-light);
+}
+
+.template-grid-item .template-thumbnail {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.template-grid-item .template-info {
+  padding: var(--spacing-md);
+}
+
+.template-grid-item .template-title {
+  font-weight: var(--font-weight-medium);
+  color: var(--color-gray-800);
+  margin-bottom: var(--spacing-xs);
+}
+
+.template-grid-item .template-category {
+  font-size: 0.75rem;
+  color: var(--color-gray-500);
+  margin-bottom: var(--spacing-sm);
+}
+
+.template-grid-item .template-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--spacing-md);
+}
+
+/* Email Editor Styles */
+.email-editor-container {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.email-editor-toolbar {
+  display: flex;
+  padding: var(--spacing-sm);
+  border-bottom: 1px solid var(--color-border);
+  background-color: var(--color-gray-50);
+}
+
+.email-editor-toolbar button {
+  background: none;
+  border: none;
+  color: var(--color-gray-700);
+  padding: var(--spacing-xs) var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  margin-right: var(--spacing-xs);
+}
+
+.email-editor-toolbar button:hover {
+  background-color: var(--color-gray-200);
+}
+
+.email-editor-toolbar button.active {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+.email-editor-content {
+  min-height: 400px;
+  padding: var(--spacing-lg);
+}
+
+/* Workflow Builder Styles */
+.workflow-canvas {
+  background-color: var(--color-gray-100);
+  background-image: radial-gradient(var(--color-gray-300) 1px, transparent 1px);
+  background-size: 20px 20px;
+  min-height: 600px;
+  position: relative;
+}
+
+.workflow-node {
+  position: absolute;
+  background-color: var(--color-surface);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  min-width: 200px;
+  box-shadow: var(--shadow-md);
+  cursor: move;
+}
+
+.workflow-node.selected {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 2px rgba(67, 56, 202, 0.3);
+}
+
+.workflow-node-trigger {
+  border-color: var(--color-primary);
+}
+
+.workflow-node-email {
+  border-color: var(--color-secondary);
+}
+
+.workflow-node-condition {
+  border-color: var(--color-warning);
+}
+
+.workflow-node-delay {
+  border-color: var(--color-info);
+}
+
+.workflow-node-action {
+  border-color: var(--color-accent);
+}
+
+.workflow-connector {
+  width: 12px;
+  height: 12px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-gray-400);
+  position: absolute;
+  cursor: pointer;
+}
+
+.workflow-connector:hover {
+  background-color: var(--color-primary);
+}
+
+/* A/B Testing Styles */
+.ab-test-variant {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.ab-test-variant.winner {
+  border-color: var(--color-accent);
+  background-color: rgba(16, 185, 129, 0.05);
+}
+
+.variant-badge {
+  display: inline-block;
+  padding: 0.25em 0.75em;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--spacing-sm);
+}
+
+.variant-badge.control {
+  background-color: rgba(67, 56, 202, 0.1);
+  color: var(--color-primary);
+}
+
+.variant-badge.variant {
+  background-color: rgba(14, 165, 233, 0.1);
+  color: var(--color-secondary);
+}
+
+.variant-badge.winner {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: var(--color-accent);
+}
+
+.confidence-meter {
+  height: 8px;
+  background-color: var(--color-gray-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  margin: var(--spacing-sm) 0;
+}
+
+.confidence-meter-fill {
+  height: 100%;
+  background-color: var(--color-accent);
+}
+
+/* SMS Integration Styles */
+.sms-preview {
+  background-color: var(--color-gray-100);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  max-width: 300px;
+  margin: var(--spacing-md) 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.sms-message {
+  background-color: var(--color-primary-light);
+  color: white;
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  margin-bottom: var(--spacing-xs);
+  max-width: 80%;
+  word-wrap: break-word;
+}
+
+/* Brand Theme Classes */
+.bg-brand-primary {
+  background-color: var(--color-primary);
+}
+
+.bg-brand-secondary {
+  background-color: var(--color-secondary);
+}
+
+.bg-brand-accent {
+  background-color: var(--color-accent);
+}
+
+.text-brand-primary {
+  color: var(--color-primary);
+}
+
+.text-brand-secondary {
+  color: var(--color-secondary);
+}
+
+.text-brand-accent {
+  color: var(--color-accent);
+}
+
+.border-brand-primary {
+  border-color: var(--color-primary);
+}
+
+.border-brand-secondary {
+  border-color: var(--color-secondary);
+}
+
+.border-brand-accent {
+  border-color: var(--color-accent);
+}

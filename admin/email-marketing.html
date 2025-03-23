@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Email Marketing - Recovery Essentials Admin</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/email-marketing-theme.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+<!-- Email Marketing Management Page -->
+<div class="email-marketing-dashboard space-y-8">
+  <div class="flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-gray-900">Email Marketing</h1>
+
+    <!-- Action Buttons -->
+    <div class="flex items-center space-x-2">
+      <button id="create-campaign-btn" class="px-3 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 text-sm flex items-center">
+        <i class="fas fa-plus mr-1"></i>
+        Create Campaign
+      </button>
+      <button id="create-template-btn" class="px-3 py-2 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 text-sm flex items-center">
+        <i class="fas fa-file-alt mr-1"></i>
+        Create Template
+      </button>
+      <!-- Notifications Button -->
+      <div class="relative">
+        <button id="notification-trigger" class="px-3 py-2 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 text-sm flex items-center">
+          <i class="fas fa-bell mr-1"></i>
+          Notifications
+          <span id="notification-badge" class="ml-1 px-1.5 py-0.5 bg-red-500 text-white text-xs rounded-full hidden">0</span>
+        </button>
+
+        <!-- Notification Panel -->
+        <div id="notification-panel" class="hidden absolute right-0 mt-2 w-96 bg-white border border-gray-200 rounded-md shadow-lg z-50">
+          <div class="px-4 py-3 border-b border-gray-200 flex justify-between items-center">
+            <h3 class="text-lg font-medium text-gray-900">Notifications</h3>
+            <div class="flex space-x-2">
+              <button id="mark-all-read-btn" class="text-xs text-gray-500 hover:text-gray-700">
+                Mark all as read
+              </button>
+              <button id="notification-settings-btn" class="text-gray-500 hover:text-gray-700">
+                <i class="fas fa-cog"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="max-h-96 overflow-y-auto" id="notification-list">
+            <!-- Notifications will be populated here by JavaScript -->
+            <div class="p-4 text-center text-gray-500">
+              <p>No notifications</p>
+            </div>
+          </div>
+
+          <div class="px-4 py-2 text-center border-t border-gray-200">
+            <a href="#" id="view-all-notifications" class="text-sm text-indigo-600 hover:text-indigo-800">View all notifications</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Settings button -->
+      <button id="settings-btn" class="px-3 py-2 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 text-sm flex items-center">
+        <i class="fas fa-cog mr-1"></i>
+        Settings
+      </button>
+    </div>
+  </div>
+
+  <!-- Email Marketing Statistics -->
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-6" id="email-stats">
+    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="text-gray-500 text-sm font-medium">Active Campaigns</h3>
+          <p id="active-campaigns" class="text-2xl font-bold text-gray-900">0</p>
+        </div>
+        <div class="bg-green-100 rounded-full p-3">
+          <i class="fas fa-paper-plane text-green-600 text-xl"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="text-gray-500 text-sm font-medium">Emails Sent (30 days)</h3>
+          <p id="emails-sent" class="text-2xl font-bold text-gray-900">0</p>
+        </div>
+        <div class="bg-blue-100 rounded-full p-3">
+          <i class="fas fa-envelope text-blue-600 text-xl"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="text-gray-500 text-sm font-medium">Open Rate</h3>
+          <p id="open-rate" class="text-2xl font-bold text-gray-900">0%</p>
+        </div>
+        <div class="bg-amber-100 rounded-full p-3">
+          <i class="fas fa-envelope-open text-amber-600 text-xl"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="text-gray-500 text-sm font-medium">Click Rate</h3>
+          <p id="click-rate" class="text-2xl font-bold text-gray-900">0%</p>
+        </div>
+        <div class="bg-purple-100 rounded-full p-3">
+          <i class="fas fa-mouse-pointer text-purple-600 text-xl"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabs -->
+  <div class="border-b border-gray-200">
+    <nav class="flex flex-wrap space-x-4 md:space-x-8 email-tabs" aria-label="Tabs">
+      <button id="campaigns-tab" class="nav-link active border-indigo-500 text-indigo-600 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+        Campaigns
+      </button>
+      <button id="templates-tab" class="nav-link border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+        Templates
+      </button>
+      <button id="automation-tab" class="nav-link border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+        Automation
+      </button>
+      <button id="segments-tab" class="nav-link border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+        Segments
+      </button>
+      <button id="workflows-tab" class="nav-link border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+        Workflows
+      </button>
+      <button id="ab-testing-tab" class="nav-link border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+        A/B Testing
+      </button>
+      <button id="ml-recommendations-tab" class="nav-link border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+        ML Insights
+      </button>
+      <button id="sms-tab" class="nav-link border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+        SMS
+      </button>
+      <button id="integrations-tab" class="nav-link border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 whitespace-nowrap py-4 px-1 border-b-2 font-medium text-sm">
+        Integrations
+      </button>
+    </nav>
+  </div>
+
+  <!-- Tab Content Sections -->
+  <div id="tab-content" class="mt-6">
+    <!-- Integrations Tab Content -->
+    <div id="integrations-content" class="hidden">
+      <div class="bg-white shadow-sm rounded-lg border border-gray-200">
+        <div class="p-6">
+          <h2 class="text-xl font-bold text-gray-900 mb-4">Email Service Provider Integrations</h2>
+
+          <!-- Provider Selection -->
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+            <div data-provider="mailchimp" class="provider-card relative border-2 border-gray-200 rounded-lg p-4 text-center hover:border-indigo-300 cursor-pointer transition-all">
+              <img src="https://same-assets.com/mailchimp-logo.png" alt="Mailchimp" class="h-12 mx-auto mb-3">
+              <h3 class="font-medium">Mailchimp</h3>
+              <span id="mailchimp-status" class="status-badge inline-block px-2 py-1 mt-2 text-xs rounded-full bg-gray-200 text-gray-700">Not Connected</span>
+            </div>
+
+            <div data-provider="sendgrid" class="provider-card relative border-2 border-gray-200 rounded-lg p-4 text-center hover:border-indigo-300 cursor-pointer transition-all">
+              <img src="https://same-assets.com/sendgrid-logo.png" alt="SendGrid" class="h-12 mx-auto mb-3">
+              <h3 class="font-medium">SendGrid</h3>
+              <span id="sendgrid-status" class="status-badge inline-block px-2 py-1 mt-2 text-xs rounded-full bg-gray-200 text-gray-700">Not Connected</span>
+            </div>
+
+            <div data-provider="constant_contact" class="provider-card relative border-2 border-gray-200 rounded-lg p-4 text-center hover:border-indigo-300 cursor-pointer transition-all">
+              <img src="https://same-assets.com/constantcontact-logo.png" alt="Constant Contact" class="h-12 mx-auto mb-3">
+              <h3 class="font-medium">Constant Contact</h3>
+              <span id="constantcontact-status" class="status-badge inline-block px-2 py-1 mt-2 text-xs rounded-full bg-gray-200 text-gray-700">Not Connected</span>
+            </div>
+
+            <div data-provider="campaign_monitor" class="provider-card relative border-2 border-gray-200 rounded-lg p-4 text-center hover:border-indigo-300 cursor-pointer transition-all">
+              <img src="https://same-assets.com/campaignmonitor-logo.png" alt="Campaign Monitor" class="h-12 mx-auto mb-3">
+              <h3 class="font-medium">Campaign Monitor</h3>
+              <span id="campaignmonitor-status" class="status-badge inline-block px-2 py-1 mt-2 text-xs rounded-full bg-gray-200 text-gray-700">Not Connected</span>
+            </div>
+          </div>
+
+          <!-- Mailchimp Integration Form -->
+          <div id="mailchimp-integration-form" class="p-6 mb-8 border border-gray-200 rounded-lg bg-gray-50">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">Connect to Mailchimp</h3>
+
+            <div class="mb-4">
+              <label for="mailchimp-api-key" class="block text-sm font-medium text-gray-700 mb-1">API Key</label>
+              <input type="text" id="mailchimp-api-key" placeholder="Enter your Mailchimp API Key" class="w-full md:w-1/2 px-3 py-2 border border-gray-300 rounded-md">
+              <p class="text-xs text-gray-500 mt-1">Find your API key in your Mailchimp account under Account > Extras > API Keys</p>
+            </div>
+
+            <div class="mb-4">
+              <label for="mailchimp-server-prefix" class="block text-sm font-medium text-gray-700 mb-1">Server Prefix</label>
+              <input type="text" id="mailchimp-server-prefix" placeholder="e.g., us1" class="w-full md:w-1/4 px-3 py-2 border border-gray-300 rounded-md">
+              <p class="text-xs text-gray-500 mt-1">This is the prefix from your Mailchimp URL (e.g., 'us1' from 'https://us1.admin.mailchimp.com')</p>
+            </div>
+
+            <div class="flex items-center mt-6">
+              <button id="connect-mailchimp-btn" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 text-sm">
+                Connect to Mailchimp
+              </button>
+              <button id="disconnect-mailchimp-btn" class="hidden px-4 py-2 ml-4 bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 text-sm">
+                Disconnect
+              </button>
+              <span id="mailchimp-connection-status" class="ml-4 text-sm"></span>
+            </div>
+          </div>
+
+          <!-- Mailchimp Actions (Visible when connected) -->
+          <div id="mailchimp-actions" class="hidden p-6 border border-gray-200 rounded-lg">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">Mailchimp Integration Actions</h3>
+
+            <!-- Lists/Audiences Section -->
+            <div class="mb-6">
+              <div class="flex items-center justify-between mb-2">
+                <h4 class="font-medium text-gray-700">Lists/Audiences</h4>
+                <button id="refresh-lists-btn" class="px-3 py-1 text-xs bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50">
+                  <i class="fas fa-sync-alt mr-1"></i> Refresh
+                </button>
+              </div>
+
+              <div id="mailchimp-lists-container" class="border border-gray-200 rounded-md">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <div class="grid grid-cols-4 gap-4 text-sm font-medium text-gray-600">
+                    <div>Name</div>
+                    <div>Members</div>
+                    <div>ID</div>
+                    <div>Actions</div>
+                  </div>
+                </div>
+                <div id="mailchimp-lists-body" class="divide-y divide-gray-200">
+                  <div class="p-4 text-gray-500 text-sm italic">
+                    Connect to Mailchimp to view your lists...
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Templates Integration -->
+            <div class="mb-6">
+              <div class="flex items-center justify-between mb-2">
+                <h4 class="font-medium text-gray-700">Templates</h4>
+                <div>
+                  <button id="sync-templates-btn" class="px-3 py-1 text-xs bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50 mr-2">
+                    <i class="fas fa-exchange-alt mr-1"></i> Sync Templates
+                  </button>
+                  <button id="refresh-templates-btn" class="px-3 py-1 text-xs bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50">
+                    <i class="fas fa-sync-alt mr-1"></i> Refresh
+                  </button>
+                </div>
+              </div>
+
+              <div id="mailchimp-templates-container" class="border border-gray-200 rounded-md">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <div class="grid grid-cols-4 gap-4 text-sm font-medium text-gray-600">
+                    <div>Name</div>
+                    <div>Type</div>
+                    <div>ID</div>
+                    <div>Actions</div>
+                  </div>
+                </div>
+                <div id="mailchimp-templates-body" class="divide-y divide-gray-200">
+                  <div class="p-4 text-gray-500 text-sm italic">
+                    Connect to Mailchimp to view your templates...
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Campaigns Integration -->
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <h4 class="font-medium text-gray-700">Campaigns</h4>
+                <div>
+                  <button id="create-mailchimp-campaign-btn" class="px-3 py-1 text-xs bg-indigo-600 text-white rounded-md hover:bg-indigo-700 mr-2">
+                    <i class="fas fa-plus mr-1"></i> Create Campaign
+                  </button>
+                  <button id="refresh-campaigns-btn" class="px-3 py-1 text-xs bg-white border border-gray-300 text-gray-700 rounded-md hover:bg-gray-50">
+                    <i class="fas fa-sync-alt mr-1"></i> Refresh
+                  </button>
+                </div>
+              </div>
+
+              <div id="mailchimp-campaigns-container" class="border border-gray-200 rounded-md">
+                <div class="bg-gray-50 px-4 py-2 border-b border-gray-200">
+                  <div class="grid grid-cols-5 gap-4 text-sm font-medium text-gray-600">
+                    <div>Name</div>
+                    <div>Status</div>
+                    <div>Send Time</div>
+                    <div>Performance</div>
+                    <div>Actions</div>
+                  </div>
+                </div>
+                <div id="mailchimp-campaigns-body" class="divide-y divide-gray-200">
+                  <div class="p-4 text-gray-500 text-sm italic">
+                    Connect to Mailchimp to view your campaigns...
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- A/B Testing Wizard Modal -->
+    <div id="ab-testing-wizard-container" class="hidden fixed inset-0 z-50 overflow-y-auto">
+      <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+        <!-- Background overlay -->
+        <div class="fixed inset-0 transition-opacity">
+          <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+        </div>
+
+        <!-- Modal panel -->
+        <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl sm:w-full">
+          <div class="bg-white p-6">
+            <div class="flex justify-between items-start mb-4">
+              <h3 class="text-lg font-medium text-gray-900">Create A/B Test</h3>
+              <button id="close-wizard-btn" class="text-gray-400 hover:text-gray-500">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+
+            <!-- Wizard Progress -->
+            <div class="mb-8">
+              <div class="flex items-center justify-between">
+                <div class="step-item flex flex-col items-center">
+                  <div class="step-indicator w-8 h-8 rounded-full border-2 flex items-center justify-center">1</div>
+                  <span class="text-xs mt-1">Type & Goal</span>
+                </div>
+                <div class="h-1 flex-1 bg-gray-200 mx-2"></div>
+                <div class="step-item flex flex-col items-center">
+                  <div class="step-indicator w-8 h-8 rounded-full border-2 flex items-center justify-center">2</div>
+                  <span class="text-xs mt-1">Test Details</span>
+                </div>
+                <div class="h-1 flex-1 bg-gray-200 mx-2"></div>
+                <div class="step-item flex flex-col items-center">
+                  <div class="step-indicator w-8 h-8 rounded-full border-2 flex items-center justify-center">3</div>
+                  <span class="text-xs mt-1">Audience</span>
+                </div>
+                <div class="h-1 flex-1 bg-gray-200 mx-2"></div>
+                <div class="step-item flex flex-col items-center">
+                  <div class="step-indicator w-8 h-8 rounded-full border-2 flex items-center justify-center">4</div>
+                  <span class="text-xs mt-1">Variants</span>
+                </div>
+                <div class="h-1 flex-1 bg-gray-200 mx-2"></div>
+                <div class="step-item flex flex-col items-center">
+                  <div class="step-indicator w-8 h-8 rounded-full border-2 flex items-center justify-center">5</div>
+                  <span class="text-xs mt-1">Review</span>
+                </div>
+              </div>
+            </div>
+
+            <form id="ab-testing-wizard-form">
+              <!-- Wizard Steps -->
+              <div id="ab-testing-wizard">
+                <!-- Step 1: Test Type & Goal -->
+                <div id="wizard-step-1" class="wizard-step">
+                  <h4 class="text-md font-medium text-gray-800 mb-4">What do you want to test?</h4>
+
+                  <div class="space-y-4 mb-6">
+                    <div class="flex items-center">
+                      <input type="radio" id="test-type-subject" name="test-type" value="subject" class="h-4 w-4 text-indigo-600 border-gray-300">
+                      <label for="test-type-subject" class="ml-2 text-sm text-gray-700">Subject Lines</label>
+                    </div>
+
+                    <div class="flex items-center">
+                      <input type="radio" id="test-type-content" name="test-type" value="content" class="h-4 w-4 text-indigo-600 border-gray-300">
+                      <label for="test-type-content" class="ml-2 text-sm text-gray-700">Email Content</label>
+                    </div>
+
+                    <div class="flex items-center">
+                      <input type="radio" id="test-type-both" name="test-type" value="subject_and_content" class="h-4 w-4 text-indigo-600 border-gray-300">
+                      <label for="test-type-both" class="ml-2 text-sm text-gray-700">Both Subject & Content</label>
+                    </div>
+
+                    <div class="flex items-center">
+                      <input type="radio" id="test-type-send-time" name="test-type" value="send_time" class="h-4 w-4 text-indigo-600 border-gray-300">
+                      <label for="test-type-send-time" class="ml-2 text-sm text-gray-700">Send Time</label>
+                    </div>
+                  </div>
+
+                  <h4 class="text-md font-medium text-gray-800 mb-4">What's your goal?</h4>
+
+                  <div class="space-y-4">
+                    <div class="flex items-center">
+                      <input type="radio" id="test-goal-open" name="test-goal" value="open_rate" class="h-4 w-4 text-indigo-600 border-gray-300">
+                      <label for="test-goal-open" class="ml-2 text-sm text-gray-700">Improve Open Rate</label>
+                    </div>
+
+                    <div class="flex items-center">
+                      <input type="radio" id="test-goal-click" name="test-goal" value="click_rate" class="h-4 w-4 text-indigo-600 border-gray-300">
+                      <label for="test-goal-click" class="ml-2 text-sm text-gray-700">Improve Click Rate</label>
+                    </div>
+
+                    <div class="flex items-center">
+                      <input type="radio" id="test-goal-conversion" name="test-goal" value="conversion_rate" class="h-4 w-4 text-indigo-600 border-gray-300">
+                      <label for="test-goal-conversion" class="ml-2 text-sm text-gray-700">Improve Conversion Rate</label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 2: Test Details -->
+                <div id="wizard-step-2" class="wizard-step hidden">
+                  <h4 class="text-md font-medium text-gray-800 mb-4">Test Details</h4>
+
+                  <div class="space-y-4">
+                    <div>
+                      <label for="test-name" class="block text-sm font-medium text-gray-700 mb-1">Test Name</label>
+                      <input type="text" id="test-name" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-sm" placeholder="Enter a descriptive name for your test">
+                    </div>
+
+                    <div>
+                      <label for="test-description" class="block text-sm font-medium text-gray-700 mb-1">Description (Optional)</label>
+                      <textarea id="test-description" rows="3" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-sm" placeholder="Describe what you're testing and why"></textarea>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 3: Audience -->
+                <div id="wizard-step-3" class="wizard-step hidden">
+                  <h4 class="text-md font-medium text-gray-800 mb-4">Select Your Audience</h4>
+
+                  <div class="space-y-4">
+                    <div>
+                      <label for="test-segment" class="block text-sm font-medium text-gray-700 mb-1">Audience Segment</label>
+                      <select id="test-segment" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-sm">
+                        <option value="">Select a segment</option>
+                        <option value="all_customers">All Customers</option>
+                        <option value="segment_active_customers">Active Customers</option>
+                        <option value="segment_new_customers">New Customers (Last 30 Days)</option>
+                        <option value="segment_inactive_customers">Inactive Customers (90+ Days)</option>
+                        <option value="segment_high_value">High Value Customers</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label for="sample-size" class="block text-sm font-medium text-gray-700 mb-1">Sample Size (% of segment)</label>
+                      <div class="flex items-center">
+                        <input type="range" id="sample-size-range" min="5" max="100" step="5" value="20" class="w-full">
+                        <input type="number" id="sample-size" min="5" max="100" value="20" class="ml-3 w-16 px-2 py-1 border border-gray-300 rounded-md shadow-sm text-sm">
+                        <span class="ml-1">%</span>
+                      </div>
+                      <p class="text-xs text-gray-500 mt-1">The percentage of your segment that will receive the test versions before sending to the remaining audience</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Step 4: Variants -->
+                <div id="wizard-step-4" class="wizard-step hidden">
+                  <div class="flex justify-between items-center mb-4">
+                    <h4 class="text-md font-medium text-gray-800">Create Your Variants</h4>
+                    <button type="button" id="add-variant-btn" class="px-3 py-1 bg-indigo-100 text-indigo-700 rounded-md text-sm hover:bg-indigo-200">
+                      <i class="fas fa-plus mr-1"></i>
+                      Add Variant
+                    </button>
+                  </div>
+
+                  <div id="variants-container" class="space-y-4">
+                    <!-- Variants will be populated by JavaScript -->
+                  </div>
+                </div>
+
+                <!-- Step 5: Review -->
+                <div id="wizard-step-5" class="wizard-step hidden">
+                  <h4 class="text-md font-medium text-gray-800 mb-4">Review Your Test</h4>
+
+                  <div class="space-y-4 bg-gray-50 p-4 rounded-md">
+                    <div>
+                      <h5 class="text-sm font-medium text-gray-700">Test Type:</h5>
+                      <p id="review-test-type" class="text-sm text-gray-900">-</p>
+                    </div>
+
+                    <div>
+                      <h5 class="text-sm font-medium text-gray-700">Goal:</h5>
+                      <p id="review-goal" class="text-sm text-gray-900">-</p>
+                    </div>
+
+                    <div>
+                      <h5 class="text-sm font-medium text-gray-700">Test Name:</h5>
+                      <p id="review-name" class="text-sm text-gray-900">-</p>
+                    </div>
+
+                    <div>
+                      <h5 class="text-sm font-medium text-gray-700">Audience:</h5>
+                      <p id="review-audience" class="text-sm text-gray-900">-</p>
+                    </div>
+
+                    <div>
+                      <h5 class="text-sm font-medium text-gray-700">Variants:</h5>
+                      <div id="review-variants" class="text-sm text-gray-900">-</div>
+                    </div>
+                  </div>
+
+                  <div class="mt-4 text-sm text-gray-500">
+                    <p>Ready to create your A/B test? Once created, you'll be able to start, monitor, and analyze the results.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Wizard Navigation -->
+              <div class="mt-6 flex justify-between">
+                <button type="button" class="wizard-prev-btn px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50">
+                  Previous
+                </button>
+
+                <div>
+                  <button type="button" id="cancel-wizard-btn" class="px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 mr-3">
+                    Cancel
+                  </button>
+                  <button type="button" class="wizard-next-btn px-4 py-2 bg-indigo-600 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-indigo-700">
+                    Next
+                  </button>
+                  <button type="button" id="create-test-btn" class="hidden px-4 py-2 bg-indigo-600 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-indigo-700">
+                    Create Test
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+  // This script will be loaded by email-marketing.js
+  document.addEventListener('DOMContentLoaded', function() {
+    // Initialize the Email Marketing system if available
+    if (window.EmailMarketing) {
+      EmailMarketing.init();
+
+      if (window.EmailPersonalization) {
+        EmailPersonalization.init();
+      }
+
+      if (window.EmailEditor) {
+        EmailEditor.init('email-editor-container');
+      }
+
+      if (window.EmailAutomation) {
+        EmailAutomation.init();
+      }
+
+      if (window.EmailAnalytics) {
+        EmailAnalytics.init();
+      }
+
+      // Initialize new modules
+      if (window.EmailWorkflowBuilder) {
+        EmailWorkflowBuilder.init({
+          canvas: document.getElementById('workflow-canvas'),
+          toolbar: document.getElementById('workflow-toolbar'),
+          properties: document.getElementById('workflow-properties')
+        });
+      }
+
+      if (window.EmailABTesting) {
+        EmailABTesting.init();
+      }
+
+      if (window.EmailMLRecommendations) {
+        EmailMLRecommendations.init();
+      }
+
+      if (window.EmailSMSIntegration) {
+        EmailSMSIntegration.init();
+      }
+
+      if (window.EmailTemplateLibrary) {
+        EmailTemplateLibrary.init();
+      }
+
+      if (window.EmailSequenceTemplates) {
+        // No initialization needed for template access
+        console.log('Email Sequence Templates loaded');
+      }
+
+      if (window.EmailAnalyticsDashboard) {
+        EmailAnalyticsDashboard.init();
+      }
+
+      // Initialize UI components last
+      if (window.EmailMarketingUIController) {
+        new EmailMarketingUIController();
+      }
+    } else {
+      console.error('Email Marketing System is not available');
+      // Display error message
+      document.getElementById('campaigns-table-body').innerHTML = `
+        <tr>
+          <td colspan="8" class="px-6 py-4 text-center text-red-500">
+            Email Marketing System is not available. Please ensure email-marketing.js is loaded.
+          </td>
+        </tr>
+      `;
+    }
+  });
+</script>
+
+<!-- Load Email Marketing Scripts -->
+<script src="js/email-marketing.js"></script>
+<script src="js/email-marketing-ui.js"></script>
+<script src="js/email-editor.js"></script>
+<script src="js/email-personalization.js"></script>
+<script src="js/email-automation.js"></script>
+<script src="js/email-analytics.js"></script>
+<script src="js/email-workflow-builder.js"></script>
+<script src="js/email-ab-testing.js"></script>
+<script src="js/email-ml-recommendations.js"></script>
+<script src="js/email-sms-integration.js"></script>
+<script src="js/email-template-library.js"></script>
+<script src="js/email-sequence-templates.js"></script>
+<script src="js/email-analytics-dashboard.js"></script>
+<script src="js/email-notifications.js"></script>
+<script src="js/email-ab-testing-wizard.js"></script>
+
+<!-- Notification Settings Modal -->
+<div id="notification-settings-modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+  <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+    <!-- Background overlay -->
+    <div class="fixed inset-0 transition-opacity">
+      <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+    </div>
+
+    <!-- Modal panel -->
+    <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+      <div class="bg-white px-4 pt-5 pb-4 sm:p-6">
+        <div class="flex justify-between items-start">
+          <h3 class="text-lg font-medium text-gray-900">Notification Settings</h3>
+          <button id="close-notification-settings" class="text-gray-400 hover:text-gray-500">
+            <i class="fas fa-times"></i>
+          </button>
+        </div>
+
+        <form id="notification-settings-form" class="mt-4">
+          <div class="space-y-4">
+            <!-- General settings -->
+            <div>
+              <h4 class="font-medium text-gray-800 mb-2">General</h4>
+              <div class="space-y-2">
+                <div class="flex items-center">
+                  <input type="checkbox" id="enableNotifications" name="enableNotifications" class="h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                  <label for="enableNotifications" class="ml-2 text-sm text-gray-700">Enable notifications</label>
+                </div>
+
+                <div class="flex items-center">
+                  <input type="checkbox" id="enableDesktopNotifications" name="enableDesktopNotifications" class="h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                  <label for="enableDesktopNotifications" class="ml-2 text-sm text-gray-700">Enable desktop notifications</label>
+                </div>
+
+                <div class="flex items-center">
+                  <input type="checkbox" id="enableBrowserNotifications" name="enableBrowserNotifications" class="h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                  <label for="enableBrowserNotifications" class="ml-2 text-sm text-gray-700">Enable in-browser notifications</label>
+                </div>
+
+                <div class="flex items-center">
+                  <input type="checkbox" id="enableEmailNotifications" name="enableEmailNotifications" class="h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                  <label for="enableEmailNotifications" class="ml-2 text-sm text-gray-700">Enable email notifications</label>
+                </div>
+
+                <div class="mt-2">
+                  <label for="notificationEmail" class="block text-sm text-gray-700 mb-1">Email address for notifications</label>
+                  <input type="email" id="notificationEmail" name="notificationEmail" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-sm" placeholder="your-email@example.com">
+                </div>
+              </div>
+            </div>
+
+            <!-- Performance thresholds -->
+            <div>
+              <h4 class="font-medium text-gray-800 mb-2">Performance Alert Thresholds</h4>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="openRateThreshold" class="block text-sm text-gray-700 mb-1">Open Rate Alert (below %)</label>
+                  <input type="number" id="openRateThreshold" name="openRateThreshold" min="0" max="100" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-sm">
+                </div>
+
+                <div>
+                  <label for="clickRateThreshold" class="block text-sm text-gray-700 mb-1">Click Rate Alert (below %)</label>
+                  <input type="number" id="clickRateThreshold" name="clickRateThreshold" min="0" max="100" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-sm">
+                </div>
+
+                <div>
+                  <label for="bounceRateThreshold" class="block text-sm text-gray-700 mb-1">Bounce Rate Alert (above %)</label>
+                  <input type="number" id="bounceRateThreshold" name="bounceRateThreshold" min="0" max="100" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-sm">
+                </div>
+
+                <div>
+                  <label for="unsubscribeRateThreshold" class="block text-sm text-gray-700 mb-1">Unsubscribe Rate Alert (above %)</label>
+                  <input type="number" id="unsubscribeRateThreshold" name="unsubscribeRateThreshold" min="0" max="100" class="block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm text-sm">
+                </div>
+              </div>
+            </div>
+
+            <!-- Notification types -->
+            <div>
+              <h4 class="font-medium text-gray-800 mb-2">Notification Types</h4>
+              <div class="space-y-2">
+                <div class="flex items-center">
+                  <input type="checkbox" id="performanceAlerts" name="performanceAlerts" class="h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                  <label for="performanceAlerts" class="ml-2 text-sm text-gray-700">Performance alerts</label>
+                </div>
+
+                <div class="flex items-center">
+                  <input type="checkbox" id="deliveryAlerts" name="deliveryAlerts" class="h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                  <label for="deliveryAlerts" class="ml-2 text-sm text-gray-700">Delivery issue alerts</label>
+                </div>
+
+                <div class="flex items-center">
+                  <input type="checkbox" id="weeklyDigest" name="weeklyDigest" class="h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                  <label for="weeklyDigest" class="ml-2 text-sm text-gray-700">Weekly performance digest</label>
+                </div>
+
+                <div class="flex items-center">
+                  <input type="checkbox" id="campaignCompletion" name="campaignCompletion" class="h-4 w-4 text-indigo-600 border-gray-300 rounded">
+                  <label for="campaignCompletion" class="ml-2 text-sm text-gray-700">Campaign completion notifications</label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-6 flex justify-end space-x-3">
+            <button type="button" id="cancel-notification-settings" class="px-4 py-2 bg-white border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50">
+              Cancel
+            </button>
+            <button type="submit" class="px-4 py-2 bg-indigo-600 border border-transparent rounded-md shadow-sm text-sm font-medium text-white hover:bg-indigo-700">
+              Save Settings
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

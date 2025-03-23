@@ -1,0 +1,220 @@
+<!-- Product Analytics Dashboard -->
+<div class="product-analytics-dashboard space-y-8">
+  <div class="flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-gray-900">Product Analytics Dashboard</h1>
+
+    <!-- Time Period Filter -->
+    <div class="flex space-x-4 items-center">
+      <label for="product-time-period" class="text-sm font-medium text-gray-700">Time Period:</label>
+      <select id="product-time-period" class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+        <option value="today">Today</option>
+        <option value="yesterday">Yesterday</option>
+        <option value="last7days">Last 7 Days</option>
+        <option value="last30days" selected>Last 30 Days</option>
+        <option value="thisMonth">This Month</option>
+        <option value="lastMonth">Last Month</option>
+        <option value="custom">Custom Range</option>
+      </select>
+
+      <!-- Custom Date Range (hidden by default) -->
+      <div id="product-custom-date-range" class="hidden flex space-x-2 items-center">
+        <input type="date" id="product-start-date" class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+        <span>to</span>
+        <input type="date" id="product-end-date" class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+        <button id="product-apply-date-range" class="px-2 py-1 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">Apply</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Filter -->
+  <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+    <div class="flex flex-col md:flex-row gap-4 items-end">
+      <div class="w-full md:w-1/3">
+        <label for="product-filter" class="block text-sm font-medium text-gray-700 mb-1">Product:</label>
+        <select id="product-filter" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+          <option value="all">All Products</option>
+          <!-- Products will be populated here -->
+        </select>
+      </div>
+      <div class="w-full md:w-1/3">
+        <label for="category-filter" class="block text-sm font-medium text-gray-700 mb-1">Category:</label>
+        <select id="category-filter" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+          <option value="all">All Categories</option>
+          <!-- Categories will be populated here -->
+        </select>
+      </div>
+      <button id="apply-product-filters" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+        Apply Filters
+      </button>
+    </div>
+  </div>
+
+  <!-- Overview Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-6" id="product-overview-cards">
+    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+      <div class="flex items-center">
+        <div class="p-3 rounded-full bg-indigo-100 text-indigo-600">
+          <i class="fas fa-eye"></i>
+        </div>
+        <div class="ml-4">
+          <p class="text-sm text-gray-500 font-medium">Product Views</p>
+          <p class="text-2xl font-bold text-gray-900" id="total-product-views">-</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+      <div class="flex items-center">
+        <div class="p-3 rounded-full bg-blue-100 text-blue-600">
+          <i class="fas fa-shopping-cart"></i>
+        </div>
+        <div class="ml-4">
+          <p class="text-sm text-gray-500 font-medium">Add to Cart</p>
+          <p class="text-2xl font-bold text-gray-900" id="total-add-to-cart">-</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+      <div class="flex items-center">
+        <div class="p-3 rounded-full bg-green-100 text-green-600">
+          <i class="fas fa-shopping-bag"></i>
+        </div>
+        <div class="ml-4">
+          <p class="text-sm text-gray-500 font-medium">Purchases</p>
+          <p class="text-2xl font-bold text-gray-900" id="total-purchases">-</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+      <div class="flex items-center">
+        <div class="p-3 rounded-full bg-yellow-100 text-yellow-600">
+          <i class="fas fa-percentage"></i>
+        </div>
+        <div class="ml-4">
+          <p class="text-sm text-gray-500 font-medium">Conversion Rate</p>
+          <p class="text-2xl font-bold text-gray-900" id="product-conversion-rate">-</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Conversion Funnel -->
+  <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <h2 class="text-lg font-semibold text-gray-900 mb-4">Conversion Funnel</h2>
+    <div class="relative w-full h-52" id="conversion-funnel-chart">
+      <!-- Funnel chart will be rendered here -->
+      <div class="flex items-center justify-center h-full text-gray-400">
+        <p>Loading funnel data...</p>
+      </div>
+    </div>
+    <div class="grid grid-cols-4 gap-4 mt-4">
+      <div class="text-center">
+        <p class="text-sm font-medium text-gray-500">View → Click</p>
+        <p class="text-xl font-bold text-indigo-600" id="view-to-click-rate">-</p>
+      </div>
+      <div class="text-center">
+        <p class="text-sm font-medium text-gray-500">Click → Cart</p>
+        <p class="text-xl font-bold text-indigo-600" id="click-to-cart-rate">-</p>
+      </div>
+      <div class="text-center">
+        <p class="text-sm font-medium text-gray-500">Cart → Purchase</p>
+        <p class="text-xl font-bold text-indigo-600" id="cart-to-purchase-rate">-</p>
+      </div>
+      <div class="text-center">
+        <p class="text-sm font-medium text-gray-500">View → Purchase</p>
+        <p class="text-xl font-bold text-indigo-600" id="view-to-purchase-rate">-</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Charts Section -->
+  <div class="flex flex-col md:flex-row gap-6">
+    <!-- Product Performance Over Time -->
+    <div class="w-full md:w-2/3 bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <h2 class="text-lg font-semibold text-gray-900 mb-4">Product Performance Over Time</h2>
+      <div class="flex mb-4">
+        <button data-metric="views" class="px-3 py-1 bg-indigo-600 text-white rounded-md mr-2 metric-toggle">Views</button>
+        <button data-metric="clicks" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-md mr-2 metric-toggle">Clicks</button>
+        <button data-metric="cart" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-md mr-2 metric-toggle">Add to Cart</button>
+        <button data-metric="purchases" class="px-3 py-1 bg-gray-200 text-gray-700 rounded-md metric-toggle">Purchases</button>
+      </div>
+      <div class="h-64" id="product-performance-chart">
+        <!-- Chart will be rendered here -->
+      </div>
+    </div>
+
+    <!-- Top Products -->
+    <div class="w-full md:w-1/3 bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <h2 class="text-lg font-semibold text-gray-900 mb-4">Top Products</h2>
+      <div class="flex mb-4">
+        <button data-ranking="views" class="px-2 py-1 bg-indigo-600 text-white rounded-md mr-2 text-xs ranking-toggle">By Views</button>
+        <button data-ranking="purchases" class="px-2 py-1 bg-gray-200 text-gray-700 rounded-md mr-2 text-xs ranking-toggle">By Purchases</button>
+        <button data-ranking="revenue" class="px-2 py-1 bg-gray-200 text-gray-700 rounded-md text-xs ranking-toggle">By Revenue</button>
+      </div>
+      <div class="h-64 overflow-auto" id="top-products-list">
+        <div class="text-center text-gray-400 py-10">Loading top products...</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Product Performance Table -->
+  <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <h2 class="text-lg font-semibold text-gray-900 mb-4">Product Performance</h2>
+    <div class="overflow-x-auto">
+      <table class="min-w-full divide-y divide-gray-200" id="product-performance-table">
+        <thead>
+          <tr class="bg-gray-50">
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Views</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Clicks</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Add to Cart</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Purchases</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Revenue</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Conversion</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200" id="product-performance-tbody">
+          <!-- Product rows will be dynamically added here -->
+          <tr>
+            <td colspan="7" class="text-center py-4 text-gray-400">Loading product data...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Export Analytics -->
+  <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <div class="flex justify-between items-center mb-4">
+      <h2 class="text-lg font-semibold text-gray-900">Export Product Analytics</h2>
+      <button id="product-export-btn" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+        Export Data
+      </button>
+    </div>
+    <div class="flex flex-wrap gap-4">
+      <div>
+        <label for="product-export-format" class="block text-sm font-medium text-gray-700 mb-1">Format</label>
+        <select id="product-export-format" class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+          <option value="json">JSON</option>
+          <option value="csv">CSV</option>
+        </select>
+      </div>
+      <div>
+        <label for="product-export-data" class="block text-sm font-medium text-gray-700 mb-1">Data to Export</label>
+        <select id="product-export-data" class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+          <option value="summary">Summary Report</option>
+          <option value="details">Detailed Report</option>
+          <option value="raw">Raw Data</option>
+        </select>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Chart.js for data visualization -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+<!-- Product Analytics Scripts -->
+<script src="js/product-analytics.js"></script>
+<script src="js/product-analytics-dashboard.js"></script>

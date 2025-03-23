@@ -1,0 +1,421 @@
+<!-- Orders Management Page -->
+<div class="orders-dashboard space-y-8">
+  <div class="flex justify-between items-center">
+    <h1 class="text-2xl font-bold text-gray-900">Order Management</h1>
+
+    <!-- Filter Controls -->
+    <div class="flex items-center space-x-2">
+      <select id="order-status-filter" class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+        <option value="">All Statuses</option>
+        <option value="pending">Pending</option>
+        <option value="processing">Processing</option>
+        <option value="shipped">Shipped</option>
+        <option value="delivered">Delivered</option>
+        <option value="cancelled">Cancelled</option>
+        <option value="refunded">Refunded</option>
+        <option value="on_hold">On Hold</option>
+        <option value="backordered">Backordered</option>
+        <option value="completed">Completed</option>
+      </select>
+
+      <select id="date-range-filter" class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+        <option value="">All Time</option>
+        <option value="today">Today</option>
+        <option value="yesterday">Yesterday</option>
+        <option value="last7">Last 7 Days</option>
+        <option value="last30" selected>Last 30 Days</option>
+        <option value="thisMonth">This Month</option>
+        <option value="lastMonth">Last Month</option>
+        <option value="custom">Custom Range</option>
+      </select>
+
+      <div id="custom-date-range" class="hidden flex space-x-2 items-center">
+        <input type="date" id="date-from" class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+        <span>to</span>
+        <input type="date" id="date-to" class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 text-sm">
+      </div>
+
+      <button id="apply-filters" class="px-3 py-1 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 text-sm">
+        Apply Filters
+      </button>
+    </div>
+  </div>
+
+  <!-- Order Statistics -->
+  <div class="grid grid-cols-1 md:grid-cols-4 gap-6" id="order-stats">
+    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="text-gray-500 text-sm font-medium">Total Orders</h3>
+          <p id="total-orders" class="text-2xl font-bold text-gray-900">0</p>
+        </div>
+        <div class="bg-indigo-100 rounded-full p-3">
+          <i class="fas fa-shopping-cart text-indigo-600 text-xl"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="text-gray-500 text-sm font-medium">Total Revenue</h3>
+          <p id="total-revenue" class="text-2xl font-bold text-green-600">$0.00</p>
+        </div>
+        <div class="bg-green-100 rounded-full p-3">
+          <i class="fas fa-dollar-sign text-green-600 text-xl"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="text-gray-500 text-sm font-medium">Average Order Value</h3>
+          <p id="avg-order-value" class="text-2xl font-bold text-blue-600">$0.00</p>
+        </div>
+        <div class="bg-blue-100 rounded-full p-3">
+          <i class="fas fa-chart-line text-blue-600 text-xl"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-sm p-6 border border-gray-200">
+      <div class="flex items-center justify-between">
+        <div>
+          <h3 class="text-gray-500 text-sm font-medium">Pending Orders</h3>
+          <p id="pending-orders" class="text-2xl font-bold text-yellow-600">0</p>
+        </div>
+        <div class="bg-yellow-100 rounded-full p-3">
+          <i class="fas fa-clock text-yellow-600 text-xl"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Orders Table -->
+  <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <div class="flex justify-between items-center mb-6">
+      <h2 class="text-lg font-semibold text-gray-900">Orders</h2>
+
+      <!-- Order Actions -->
+      <div class="flex space-x-2">
+        <div class="relative">
+          <input type="text" id="order-search" placeholder="Search orders..." class="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 pl-9 pr-4 py-2 text-sm">
+          <div class="absolute left-3 top-2.5 text-gray-400">
+            <i class="fas fa-search"></i>
+          </div>
+        </div>
+
+        <button id="create-order-btn" class="flex items-center bg-indigo-600 text-white px-3 py-2 rounded-md hover:bg-indigo-700 text-sm">
+          <i class="fas fa-plus mr-2"></i>
+          New Order
+        </button>
+
+        <button id="export-orders-btn" class="flex items-center bg-gray-100 text-gray-700 px-3 py-2 rounded-md hover:bg-gray-200 text-sm">
+          <i class="fas fa-download mr-2"></i>
+          Export
+        </button>
+      </div>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table id="orders-table" class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+          <tr>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Order #</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Customer</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Status</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Payment</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+            <th scope="col" class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200" id="orders-table-body">
+          <!-- Orders will be loaded here dynamically -->
+          <tr>
+            <td colspan="7" class="px-6 py-4 text-center text-gray-500">
+              Loading orders...
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Pagination -->
+    <div class="flex items-center justify-between border-t border-gray-200 px-4 py-3 sm:px-6 mt-4">
+      <div class="flex flex-1 justify-between sm:hidden">
+        <button id="prev-page-mobile" class="relative inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Previous</button>
+        <button id="next-page-mobile" class="relative ml-3 inline-flex items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50">Next</button>
+      </div>
+      <div class="hidden sm:flex sm:flex-1 sm:items-center sm:justify-between">
+        <div>
+          <p class="text-sm text-gray-700">
+            Showing <span id="page-start" class="font-medium">1</span> to <span id="page-end" class="font-medium">10</span> of <span id="total-items" class="font-medium">--</span> results
+          </p>
+        </div>
+        <div>
+          <nav class="isolate inline-flex -space-x-px rounded-md shadow-sm" aria-label="Pagination">
+            <button id="prev-page" class="relative inline-flex items-center rounded-l-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+              <span class="sr-only">Previous</span>
+              <i class="fas fa-chevron-left h-5 w-5"></i>
+            </button>
+            <div id="pagination-numbers">
+              <!-- Page numbers will be inserted here -->
+            </div>
+            <button id="next-page" class="relative inline-flex items-center rounded-r-md border border-gray-300 bg-white px-2 py-2 text-sm font-medium text-gray-500 hover:bg-gray-50 focus:z-20">
+              <span class="sr-only">Next</span>
+              <i class="fas fa-chevron-right h-5 w-5"></i>
+            </button>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Recent Activity -->
+  <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <h2 class="text-lg font-semibold text-gray-900 mb-4">Recent Activity</h2>
+    <div id="recent-activity" class="space-y-4">
+      <!-- Activity items will be loaded here -->
+      <div class="text-center text-gray-500 py-4">
+        Loading recent activity...
+      </div>
+    </div>
+  </div>
+
+  <!-- Top Selling Products -->
+  <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <h2 class="text-lg font-semibold text-gray-900 mb-4">Top Selling Products</h2>
+    <div class="overflow-x-auto">
+      <table class="min-w-full divide-y divide-gray-200">
+        <thead class="bg-gray-50">
+          <tr>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Units Sold</th>
+            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Revenue</th>
+          </tr>
+        </thead>
+        <tbody class="bg-white divide-y divide-gray-200" id="top-products-table">
+          <!-- Top products will be loaded here -->
+          <tr>
+            <td colspan="3" class="px-6 py-4 text-center text-gray-500">
+              Loading top products...
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Order Detail Modal -->
+<div id="order-detail-modal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center hidden z-50">
+  <div class="bg-white rounded-lg shadow-xl max-w-5xl w-full max-h-screen overflow-y-auto">
+    <div class="p-6">
+      <div class="flex justify-between items-center border-b border-gray-200 pb-4 mb-4">
+        <h2 class="text-xl font-bold text-gray-900" id="modal-title">Order Details: #10001</h2>
+        <button id="close-modal" class="text-gray-400 hover:text-gray-500">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <div id="order-detail-content">
+        <!-- Order details will be loaded here -->
+        <div class="text-center text-gray-500 py-8">
+          Loading order details...
+        </div>
+      </div>
+
+      <div class="flex justify-end space-x-3 mt-6 pt-4 border-t border-gray-200">
+        <button id="print-order" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200">
+          <i class="fas fa-print mr-2"></i> Print
+        </button>
+        <button id="edit-order" class="px-4 py-2 bg-indigo-100 text-indigo-700 rounded-md hover:bg-indigo-200">
+          <i class="fas fa-edit mr-2"></i> Edit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- New Order / Edit Order Modal -->
+<div id="create-edit-order-modal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center hidden z-50">
+  <div class="bg-white rounded-lg shadow-xl max-w-5xl w-full max-h-screen overflow-y-auto">
+    <div class="p-6">
+      <div class="flex justify-between items-center border-b border-gray-200 pb-4 mb-4">
+        <h2 class="text-xl font-bold text-gray-900" id="create-edit-modal-title">Create New Order</h2>
+        <button id="close-create-edit-modal" class="text-gray-400 hover:text-gray-500">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <form id="order-form">
+        <!-- Hidden field for order ID (when editing) -->
+        <input type="hidden" id="edit-order-id" value="">
+
+        <!-- Customer Information -->
+        <div class="mb-6">
+          <h3 class="text-lg font-medium text-gray-900 mb-3">Customer Information</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label for="customer-name" class="block text-sm font-medium text-gray-700 mb-1">Customer Name</label>
+              <input type="text" id="customer-name" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+            </div>
+            <div>
+              <label for="customer-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+              <input type="email" id="customer-email" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+            </div>
+            <div>
+              <label for="customer-phone" class="block text-sm font-medium text-gray-700 mb-1">Phone</label>
+              <input type="tel" id="customer-phone" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+            </div>
+          </div>
+        </div>
+
+        <!-- Order Items -->
+        <div class="mb-6">
+          <div class="flex justify-between items-center mb-3">
+            <h3 class="text-lg font-medium text-gray-900">Order Items</h3>
+            <button type="button" id="add-item-btn" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium">
+              <i class="fas fa-plus mr-1"></i> Add Item
+            </button>
+          </div>
+
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Product</th>
+                  <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price</th>
+                  <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Quantity</th>
+                  <th scope="col" class="px-4 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                  <th scope="col" class="px-4 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="order-items-body" class="bg-white divide-y divide-gray-200">
+                <!-- Order items will be added here -->
+                <tr id="no-items-row">
+                  <td colspan="5" class="px-4 py-4 text-center text-gray-500">
+                    No items added yet. Click "Add Item" to add products to this order.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Order Totals -->
+        <div class="mb-6">
+          <h3 class="text-lg font-medium text-gray-900 mb-3">Order Totals</h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <div class="flex justify-between mb-2">
+                <label for="order-subtotal" class="block text-sm font-medium text-gray-700">Subtotal:</label>
+                <span id="order-subtotal" class="text-sm font-medium">$0.00</span>
+              </div>
+              <div class="flex justify-between mb-2">
+                <label for="order-tax" class="block text-sm font-medium text-gray-700">Tax:</label>
+                <span id="order-tax" class="text-sm font-medium">$0.00</span>
+              </div>
+              <div class="flex justify-between mb-2">
+                <label for="order-shipping" class="block text-sm font-medium text-gray-700">Shipping:</label>
+                <div class="flex items-center">
+                  <span>$</span>
+                  <input type="number" id="order-shipping" min="0" step="0.01" value="0.00" class="w-20 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                </div>
+              </div>
+              <div class="flex justify-between mb-2">
+                <label for="order-discount" class="block text-sm font-medium text-gray-700">Discount:</label>
+                <div class="flex items-center">
+                  <span>$</span>
+                  <input type="number" id="order-discount" min="0" step="0.01" value="0.00" class="w-20 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                </div>
+              </div>
+              <div class="flex justify-between font-bold pt-2 border-t">
+                <label for="order-total" class="block text-sm font-medium text-gray-700">Total:</label>
+                <span id="order-total" class="text-sm font-medium">$0.00</span>
+              </div>
+            </div>
+            <div>
+              <div class="mb-4">
+                <label for="order-status" class="block text-sm font-medium text-gray-700 mb-1">Order Status</label>
+                <select id="order-status" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+                  <option value="pending">Pending</option>
+                  <option value="processing">Processing</option>
+                  <option value="shipped">Shipped</option>
+                  <option value="delivered">Delivered</option>
+                  <option value="cancelled">Cancelled</option>
+                  <option value="refunded">Refunded</option>
+                  <option value="on_hold">On Hold</option>
+                  <option value="backordered">Backordered</option>
+                  <option value="completed">Completed</option>
+                </select>
+              </div>
+              <div>
+                <label for="order-notes" class="block text-sm font-medium text-gray-700 mb-1">Order Notes</label>
+                <textarea id="order-notes" rows="3" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-end space-x-3 pt-4 border-t border-gray-200">
+          <button type="button" id="cancel-order-btn" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200">
+            Cancel
+          </button>
+          <button type="submit" id="save-order-btn" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+            Save Order
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Add Item Modal -->
+<div id="add-item-modal" class="fixed inset-0 bg-gray-500 bg-opacity-75 flex items-center justify-center hidden z-50">
+  <div class="bg-white rounded-lg shadow-xl max-w-md w-full">
+    <div class="p-6">
+      <div class="flex justify-between items-center border-b border-gray-200 pb-4 mb-4">
+        <h2 class="text-xl font-bold text-gray-900">Add Item</h2>
+        <button id="close-add-item-modal" class="text-gray-400 hover:text-gray-500">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+
+      <form id="add-item-form">
+        <div class="mb-4">
+          <label for="item-product" class="block text-sm font-medium text-gray-700 mb-1">Product</label>
+          <select id="item-product" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+            <option value="">Select a product</option>
+            <!-- Products will be loaded here -->
+          </select>
+        </div>
+
+        <div class="mb-4">
+          <label for="item-price" class="block text-sm font-medium text-gray-700 mb-1">Price</label>
+          <input type="number" step="0.01" min="0" id="item-price" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+        </div>
+
+        <div class="mb-4">
+          <label for="item-quantity" class="block text-sm font-medium text-gray-700 mb-1">Quantity</label>
+          <input type="number" min="1" id="item-quantity" value="1" class="w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500">
+        </div>
+
+        <div class="flex justify-end space-x-3 pt-4 border-t border-gray-200">
+          <button type="button" id="cancel-add-item-btn" class="px-4 py-2 bg-gray-100 text-gray-700 rounded-md hover:bg-gray-200">
+            Cancel
+          </button>
+          <button type="submit" id="save-item-btn" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+            Add
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Order management script -->
+<script src="js/order-management.js"></script>
+<script src="js/orders-ui.js"></script>
