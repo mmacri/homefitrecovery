@@ -935,3 +935,147 @@
 
                         <div class="mb-6">
                             <label for="product-meta-description"
+                            class="block text-sm font-medium text-gray-700 mb-1">Meta Description</label>
+                                <textarea id="product-meta-description" name="product-meta-description" rows="3" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent"></textarea>
+                                <p class="text-xs text-gray-500 mt-1">Recommended: 150-160 characters</p>
+                            </div>
+
+                            <div>
+                                <label for="product-url" class="block text-sm font-medium text-gray-700 mb-1">Product URL</label>
+                                <input type="text" id="product-url" name="product-url" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Submit Buttons -->
+                    <div class="flex justify-end gap-4">
+                        <button type="button" class="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400" onclick="resetForm()">
+                            Cancel
+                        </button>
+                        <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
+                            Save Product
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-white shadow-sm text-center p-4 text-gray-600">
+        &copy; 2025 Recovery Essentials. All rights reserved.
+    </footer>
+
+    <!-- JavaScript to handle tabs -->
+    <script>
+        function showProductTab(tabId) {
+            const tabContents = document.querySelectorAll('.product-tab-content');
+            tabContents.forEach(content => content.classList.add('hidden'));
+
+            const tabButtons = document.querySelectorAll('.product-tab-button');
+            tabButtons.forEach(button => {
+                button.classList.remove('bg-indigo-100', 'text-indigo-700', 'border-indigo-700');
+                button.classList.add('bg-white', 'text-gray-700', 'border-transparent', 'hover:border-gray-300');
+            });
+
+            const selectedTab = document.getElementById(tabId);
+            selectedTab.classList.remove('hidden');
+
+            const selectedButton = document.querySelector(`.product-tab-button[data-tab="${tabId}"]`);
+            selectedButton.classList.remove('bg-white', 'text-gray-700', 'border-transparent', 'hover:border-gray-300');
+            selectedButton.classList.add('bg-indigo-100', 'text-indigo-700', 'border-indigo-700');
+        }
+
+        // Set the first tab as active by default
+        showProductTab('product-info-tab');
+    </script>
+
+    <!-- JavaScript to handle adding/removing feature fields -->
+    <script>
+        function removeFeatureField(element) {
+            element.parentNode.remove();
+        }
+
+        document.getElementById('add-feature-btn').addEventListener('click', function() {
+            const container = document.getElementById('feature-container');
+            const featureDiv = document.createElement('div');
+            featureDiv.className = 'flex items-center gap-2';
+            featureDiv.innerHTML = `
+                <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="Feature or benefit">
+                <button type="button" class="bg-red-100 hover:bg-red-200 text-red-600 p-2 rounded-md" onclick="removeFeatureField(this)">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            container.appendChild(featureDiv);
+        });
+    </script>
+
+    <!-- JavaScript to handle adding/removing specification fields -->
+    <script>
+        document.getElementById('add-spec-btn').addEventListener('click', function() {
+            const container = document.getElementById('specification-container');
+            const specDiv = document.createElement('div');
+            specDiv.className = 'grid grid-cols-2 gap-4 mb-4';
+            specDiv.innerHTML = `
+                <div>
+                    <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="Specification Name">
+                </div>
+                <div>
+                    <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="Specification Value">
+                </div>
+            `;
+            container.appendChild(specDiv);
+        });
+    </script>
+
+    <!-- JavaScript to handle adding additional image fields -->
+    <script>
+        function addAdditionalImageField() {
+            const container = document.getElementById('additional-images-container');
+            const imageDiv = document.createElement('div');
+            imageDiv.className = 'mb-4';
+            imageDiv.innerHTML = `
+                <input type="url" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="Additional Image URL">
+            `;
+            container.appendChild(imageDiv);
+        }
+    </script>
+
+    <!-- JavaScript to handle adding product variants -->
+    <script>
+        document.getElementById('add-variant-btn').addEventListener('click', function() {
+            const container = document.getElementById('variant-container');
+            const variantDiv = document.createElement('div');
+            variantDiv.className = 'mb-4 border border-gray-200 rounded-md p-4';
+            variantDiv.innerHTML = `
+                <h4 class="text-lg font-medium text-gray-900 mb-2">Variant</h4>
+                <div class="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Option Name</label>
+                        <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="e.g., Color, Size">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Option Value</label>
+                        <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="e.g., Red, Large">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Additional Price</label>
+                    <input type="number" step="0.01" min="0" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500 focus:border-transparent" placeholder="e.g., 5.00">
+                </div>
+            `;
+            container.appendChild(variantDiv);
+        });
+    </script>
+
+    <!-- JavaScript to handle form reset -->
+    <script>
+        function resetForm() {
+            document.getElementById('product-form').reset();
+        }
+    </script>
+
+    <!-- Main script file -->
+    <script src="js/script.js"></script>
+</body>
+</html>
